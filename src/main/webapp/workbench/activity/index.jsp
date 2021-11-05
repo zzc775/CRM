@@ -1,22 +1,119 @@
+<%--
+Created by IntelliJ IDEA.
+User: zzc775
+Date: 2021/11/3
+Time: 10:25
+To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<% String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 	request.getServerPort() + request.getContextPath() + "/";%>
 <!DOCTYPE html>
 <html>
 <head>
+	<base href="<%=basePath%>">
 <meta charset="UTF-8">
 
-<link href="../../jquery/bootstrap_3.3.0/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
-<link href="../../jquery/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" type="text/css" rel="stylesheet" />
+<link href="jquery/bootstrap_3.3.0/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+<link href="jquery/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" type="text/css" rel="stylesheet" />
 
-<script type="text/javascript" src="../../jquery/jquery-1.11.1-min.js"></script>
-<script type="text/javascript" src="../../jquery/bootstrap_3.3.0/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../../jquery/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js"></script>
-<script type="text/javascript" src="../../jquery/bootstrap-datetimepicker-master/locale/bootstrap-datetimepicker.zh-CN.js"></script>
+<script type="text/javascript" src="jquery/jquery-1.11.1-min.js"></script>
+<script type="text/javascript" src="jquery/bootstrap_3.3.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="jquery/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="jquery/bootstrap-datetimepicker-master/locale/bootstrap-datetimepicker.zh-CN.js"></script>
 
 <script type="text/javascript">
 
+	//市场活动数据获取,包含根据条件查找数据和无脑查所有
+	//适用场景
+	//1.点击市场活动
+	//2.创建,修改,删除市场活动
+	//3.查询
+	//4.翻页相关
+	//参数说明:
+	//
+	function getActivityList(pageNo,pageSize) {
+		$.ajax({
+			url:"",
+			data:{
+				"name" : $("#search-name").val.trim(),
+				"owner" : $("#search-owner").val.trim(),
+				"startDate" : $("#search-startDate").val.trim(),
+				"endDate" : $("#search-endDate").val.trim(),
+			},
+			type:"",
+			dataType:"json",
+			success:function (data) {
+				$.each(function (i, n) {
+					//往市场活动列表添加数据
+				});
+			}
+		})
+	}
+
 	$(function(){
-		
-		
-		
+
+		//为创建按钮绑定事件
+		$("#createBtn").click(function (){
+
+
+			//为时间输入框绑定时间控件
+			$(".time").datetimepicker({
+				minView: "month",
+				language:  'zh-CN',
+				format: 'yyyy-mm-dd',
+				autoclose: true,
+				todayBtn: true,
+				pickerPosition: "bottom-left"
+			});
+			// 通过js脚本打开模态窗口.获取模态窗口的jquery对象,调用modal()方法,
+			// 参数String: 1."show"  2."hide"隐藏
+			//在打开模态窗口之前先获取userList把其填充到所有者下拉框
+
+			//发送请求
+			$.ajax({
+				url:"workbench/activity/getUserList.do",
+				type:"get",
+				dataType:"json",
+				success:function (data) {
+					let html;
+					$.each(data,function (i,n) {
+						html += "<option value='" + n.id + "'>" + n.name + "</option>";
+					})
+					$("#create-marketActivityOwner").html(html).val("${user.id}");
+					//打开模态窗口
+					$("#createActivityModal").modal("show");
+				}
+			});
+		});
+
+
+		$("#saveBtn").click(function () {
+			$.ajax({
+				url:"workbench/activity/save.do",
+				data:{
+					"owner":$("#create-marketActivityOwner").val().trim(),
+					"name":$("#create-marketActivityName").val().trim(),
+					"startDate":$("#create-marketActivityStartDate").val(),
+					"endDate":$("#create-marketActivityEndDate").val(),
+					"cost":$("#create-cost").val().trim(),
+					"describe":$("#create-describe").val().trim()
+				},
+				type: "post",
+				dataType:"json",
+				success:function (data){
+					if (data.success){
+						//1.重置模态窗口
+						$("#create-form")[0].reset();
+						//2.关闭模态窗口
+						$("#createActivityModal").modal("hide");
+						//3.刷新活动列表
+						getActivityList();
+					}else{
+						alert("添加失败")
+					}
+				}
+			})
+		});
 	});
 	
 </script>
@@ -35,15 +132,17 @@
 				</div>
 				<div class="modal-body">
 				
-					<form class="form-horizontal" role="form">
+					<form class="form-horizontal" role="form" id="create-form">
 					
 						<div class="form-group">
 							<label for="create-marketActivityOwner" class="col-sm-2 control-label">所有者<span style="font-size: 15px; color: red;">*</span></label>
 							<div class="col-sm-10" style="width: 300px;">
+								<%--					设置了默认下拉框选择项,但是不生效
+
+												已解决:select标签value属性在设置时必须存在带这个值option标签,后面在添加同值的select标签是无效的,会默认显示第一个option
+								--%>
 								<select class="form-control" id="create-marketActivityOwner">
-								  <option>zhangsan</option>
-								  <option>lisi</option>
-								  <option>wangwu</option>
+									<%--					用户名列表				--%>
 								</select>
 							</div>
                             <label for="create-marketActivityName" class="col-sm-2 control-label">名称<span style="font-size: 15px; color: red;">*</span></label>
@@ -53,13 +152,13 @@
 						</div>
 						
 						<div class="form-group">
-							<label for="create-startTime" class="col-sm-2 control-label">开始日期</label>
+							<label for="create-startTime" class="col-sm-2 control-label" >开始日期</label>
 							<div class="col-sm-10" style="width: 300px;">
-								<input type="text" class="form-control" id="create-startTime">
+								<input type="text" class="form-control time" id="create-startTime" readonly>
 							</div>
 							<label for="create-endTime" class="col-sm-2 control-label">结束日期</label>
 							<div class="col-sm-10" style="width: 300px;">
-								<input type="text" class="form-control" id="create-endTime">
+								<input type="text" class="form-control time" id="create-endTime" readonly>
 							</div>
 						</div>
                         <div class="form-group">
@@ -80,8 +179,9 @@
 					
 				</div>
 				<div class="modal-footer">
+					<%--		data-dismiss="modal":关闭模态窗口			--%>
 					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-					<button type="button" class="btn btn-primary" data-dismiss="modal">保存</button>
+					<button type="button" class="btn btn-primary" id="saveBtn">保存</button>
 				</div>
 			</div>
 		</div>
@@ -119,11 +219,11 @@
 						<div class="form-group">
 							<label for="edit-startTime" class="col-sm-2 control-label">开始日期</label>
 							<div class="col-sm-10" style="width: 300px;">
-								<input type="text" class="form-control" id="edit-startTime" value="2020-10-10">
+								<input type="text" class="form-control time" id="edit-startTime" value="2020-10-10" readonly>
 							</div>
 							<label for="edit-endTime" class="col-sm-2 control-label">结束日期</label>
 							<div class="col-sm-10" style="width: 300px;">
-								<input type="text" class="form-control" id="edit-endTime" value="2020-10-20">
+								<input type="text" class="form-control time" id="edit-endTime" value="2020-10-20" readonly>
 							</div>
 						</div>
 						
@@ -171,14 +271,14 @@
 				  <div class="form-group">
 				    <div class="input-group">
 				      <div class="input-group-addon">名称</div>
-				      <input class="form-control" type="text">
+				      <input class="form-control" type="text" id="search-name">
 				    </div>
 				  </div>
 				  
 				  <div class="form-group">
 				    <div class="input-group">
 				      <div class="input-group-addon">所有者</div>
-				      <input class="form-control" type="text">
+				      <input class="form-control" type="text" id="search-owner">
 				    </div>
 				  </div>
 
@@ -186,24 +286,32 @@
 				  <div class="form-group">
 				    <div class="input-group">
 				      <div class="input-group-addon">开始日期</div>
-					  <input class="form-control" type="text" id="startTime" />
+					  <input class="form-control" type="text" id="search-startTime" />
 				    </div>
 				  </div>
 				  <div class="form-group">
 				    <div class="input-group">
 				      <div class="input-group-addon">结束日期</div>
-					  <input class="form-control" type="text" id="endTime">
+					  <input class="form-control" type="text" id="search-endTime">
 				    </div>
 				  </div>
 				  
-				  <button type="submit" class="btn btn-default">查询</button>
+				  <button type="submit" class="btn btn-default" id="searchBtn">查询</button>
 				  
 				</form>
 			</div>
 			<div class="btn-toolbar" role="toolbar" style="background-color: #F7F7F7; height: 50px; position: relative;top: 5px;">
+
+				<%--
+
+					data-toggle="modal":声明点击事件为打开模态窗口
+					data-target="#createActivityModal":声明要打开的目标模态窗口
+
+
+				--%>
 				<div class="btn-group" style="position: relative; top: 18%;">
-				  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createActivityModal"><span class="glyphicon glyphicon-plus"></span> 创建</button>
-				  <button type="button" class="btn btn-default" data-toggle="modal" data-target="#editActivityModal"><span class="glyphicon glyphicon-pencil"></span> 修改</button>
+				  <button type="button" class="btn btn-primary" id="createBtn"><span class="glyphicon glyphicon-plus"></span> 创建</button>
+				  <button type="button" class="btn btn-default" id="editBtn"><span class="glyphicon glyphicon-pencil"></span> 修改</button>
 				  <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-minus"></span> 删除</button>
 				</div>
 				
@@ -222,14 +330,14 @@
 					<tbody>
 						<tr class="active">
 							<td><input type="checkbox" /></td>
-							<td><a style="text-decoration: none; cursor: pointer;" onclick="window.location.href='detail.html';">发传单</a></td>
+							<td><a style="text-decoration: none; cursor: pointer;" onclick="window.location.href='workbench/activity/detail.jsp';">发传单</a></td>
                             <td>zhangsan</td>
 							<td>2020-10-10</td>
 							<td>2020-10-20</td>
 						</tr>
                         <tr class="active">
                             <td><input type="checkbox" /></td>
-                            <td><a style="text-decoration: none; cursor: pointer;" onclick="window.location.href='detail.html';">发传单</a></td>
+                            <td><a style="text-decoration: none; cursor: pointer;" onclick="window.location.href='workbench/activity/detail.jsp';">发传单</a></td>
                             <td>zhangsan</td>
                             <td>2020-10-10</td>
                             <td>2020-10-20</td>

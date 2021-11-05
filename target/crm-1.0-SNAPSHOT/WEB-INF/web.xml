@@ -5,16 +5,49 @@
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
 
+<!--  登入验证过滤器-->
+  <filter>
+    <filter-name>LoginFilter</filter-name>
+    <filter-class>com.zzc775.crm.web.filter.LoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <url-pattern>*.do</url-pattern>
+    <url-pattern>*.jsp</url-pattern>
+  </filter-mapping>
+
+<!--  解决中文乱码过滤器-->
+  <filter>
+    <filter-name>EncodingFilter</filter-name>
+    <filter-class>com.zzc775.crm.web.filter.EncodingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>EncodingFilter</filter-name>
+    <url-pattern>*.do</url-pattern>
+  </filter-mapping>
+
+<!--  settings模块-->
+
+<!--  User控制器-->
   <servlet>
-    <servlet-name>xxxController</servlet-name>
-    <servlet-class>xxx.xxxController</servlet-class>
+    <servlet-name>UserController</servlet-name>
+    <servlet-class>com.zzc775.crm.settings.web.controller.UserController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>xxxController</servlet-name>
-    <url-pattern>/xxx/xxx.do</url-pattern>
-
+    <servlet-name>UserController</servlet-name>
+    <url-pattern>/settings/user/login.do</url-pattern>
   </servlet-mapping>
 
+<!--  workbench模块-->
 
-
+<!--  Activity控制器-->
+  <servlet>
+    <servlet-name>ActivityController</servlet-name>
+    <servlet-class>com.zzc775.crm.workbench.web.controller.ActivityController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ActivityController</servlet-name>
+    <url-pattern>/workbench/activity/getUserList.do</url-pattern>
+    <url-pattern>/workbench/activity/save.do</url-pattern>
+  </servlet-mapping>
 </web-app>

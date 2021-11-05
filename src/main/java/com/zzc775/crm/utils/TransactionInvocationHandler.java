@@ -29,14 +29,19 @@ public class TransactionInvocationHandler implements InvocationHandler {
 
         //事务代理
         SqlSession session = null;
-        Object obj = null;
+        Object obj;
         try {
             session = SqlSessionUtil.getSqlSession();
-            obj = method.invoke(target);
+            obj = method.invoke(target,args);
             session.commit();
         }catch (Exception e) {
-            session.rollback();
+            if (session!=null){
+                session.rollback();
+            }
             e.printStackTrace();
+
+            //抛出抓取到的异常
+            throw e.getCause();
         }finally {
             SqlSessionUtil.close();
         }

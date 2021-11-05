@@ -9,7 +9,7 @@ package com.zzc775.crm.utils;
  * @Version 1.0
  **/
 public class ServiceFactory {
-    public static Object getService(Object obj){
+    public static Object get(Object obj){
         return new TransactionInvocationHandler(obj).getProxy();
     }
 }

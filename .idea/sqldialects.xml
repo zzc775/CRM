@@ -3,5 +3,7 @@
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/src/main/java/com/zzc775/crm/settings/dao/UserDao.xml" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/zzc775/crm/workbench/dao/ActivityDao.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/zzc775/crm/workbench/dao/ActivityRemarkDao.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/zzc775/crm/workbench/dao/ClueDao.xml" dialect="MySQL" />
   </component>
 </project>

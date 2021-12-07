@@ -1,6 +1,13 @@
 package com.zzc775.settings.test;
 
 import com.zzc775.crm.utils.MD5Util;
+import com.zzc775.crm.utils.SqlSessionUtil;
+import com.zzc775.crm.workbench.dao.ActivityDao;
+import com.zzc775.crm.workbench.domain.Activity;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName Test1
@@ -12,7 +19,6 @@ import com.zzc775.crm.utils.MD5Util;
  **/
 public class Test1 {
     public static void main(String[] args) {
-        String md5 = MD5Util.getMD5("ZHONGzhuangcai2021405018");
-        System.out.println(md5);
+
     }
 }

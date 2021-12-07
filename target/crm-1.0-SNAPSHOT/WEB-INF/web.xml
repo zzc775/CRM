@@ -49,5 +49,15 @@
     <servlet-name>ActivityController</servlet-name>
     <url-pattern>/workbench/activity/getUserList.do</url-pattern>
     <url-pattern>/workbench/activity/save.do</url-pattern>
+    <url-pattern>/workbench/activity/getActivityList.do</url-pattern>
+    <url-pattern>/workbench/activity/delete.do</url-pattern>
+    <url-pattern>/workbench/activity/get.do</url-pattern>
+    <url-pattern>/workbench/activity/update.do</url-pattern>
+    <url-pattern>/workbench/activity/detail.do</url-pattern>
+    <url-pattern>/workbench/activity/getRemarkList.do</url-pattern>
+    <url-pattern>/workbench/activity/remarkSave.do</url-pattern>
+    <url-pattern>/workbench/activity/deleteRemark.do</url-pattern>
+    <url-pattern>/workbench/activity/getRemarkContent.do</url-pattern>
+    <url-pattern>/workbench/activity/updateRemark.do</url-pattern>
   </servlet-mapping>
 </web-app>

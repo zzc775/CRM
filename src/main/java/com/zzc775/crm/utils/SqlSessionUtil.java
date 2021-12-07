@@ -18,12 +18,12 @@ import java.io.InputStream;
  **/
 public class SqlSessionUtil {
     private static SqlSessionFactory sessionFactory;
-    private static final ThreadLocal<SqlSession> t = new ThreadLocal<SqlSession>();
+    private static final ThreadLocal<SqlSession> t = new ThreadLocal<>();
     static {
         String resource = "mybatis-config.xml";
         try {
-            InputStream resourceAsFile = Resources.getResourceAsStream(resource);
-            sessionFactory = new SqlSessionFactoryBuilder().build(resourceAsFile);
+            InputStream inputStream = Resources.getResourceAsStream(resource);
+            sessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         } catch (IOException e) {
             e.printStackTrace();
         }

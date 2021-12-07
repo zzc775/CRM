@@ -1,3 +1,4 @@
+<jsp:useBean id="user" scope="session" type="com.zzc775.crm.settings.domain.User"/>
 <%--
 Created by IntelliJ IDEA.
 User: zzc775
@@ -5,13 +6,14 @@ Date: 2021/11/3
 Time: 10:25
 To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <% String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 	request.getServerPort() + request.getContextPath() + "/";%>
 <!DOCTYPE html>
 <html>
 <head>
 	<base href="<%=basePath%>">
 	<meta charset="UTF-8">
+	<title></title>
 	<link href="jquery/bootstrap_3.3.0/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
 	<script type="text/javascript" src="jquery/jquery-1.11.1-min.js"></script>
 	<script type="text/javascript" src="jquery/bootstrap_3.3.0/js/bootstrap.min.js"></script>
@@ -30,7 +32,7 @@ To change this template use File | Settings | File Templates.
 		$(".liClass:first > a").css("color" , "white");
 		
 		//给所有的菜单项注册鼠标单击事件
-		$(".liClass").click(function(){
+		$(".liClass").on("click",function(){
 			//移除所有菜单项的激活状态
 			$(".liClass").removeClass("active");
 			//导航中所有文本颜色为黑色
@@ -42,7 +44,7 @@ To change this template use File | Settings | File Templates.
 		});
 		
 		
-		window.open("workbench/main/index.jsp","workareaFrame");
+		window.open("workbench/main/index.jsp","workAreaFrame");
 		
 	});
 	
@@ -50,7 +52,7 @@ To change this template use File | Settings | File Templates.
 
 </head>
 <body>
-	
+
 	<!-- 我的资料 -->
 	<div class="modal fade" id="myInformation" role="dialog">
 		<div class="modal-dialog" role="document" style="width: 30%;">
@@ -143,7 +145,7 @@ To change this template use File | Settings | File Templates.
 	
 	<!-- 顶部 -->
 	<div id="top" style="height: 50px; background-color: #3C3C3C; width: 100%;">
-		<div style="position: absolute; top: 5px; left: 0px; font-size: 30px; font-weight: 400; color: white; font-family: 'times new roman'">CRM &nbsp;<span style="font-size: 12px;">&copy;2017&nbsp;动力节点</span></div>
+		<div style="position: absolute; top: 5px; left: 0; font-size: 30px; font-weight: 400; color: white; font-family: 'times new roman',serif">CRM &nbsp;<span style="font-size: 12px;">&copy;2017&nbsp;动力节点</span></div>
 		<div style="position: absolute; top: 15px; right: 15px;">
 			<ul>
 				<li class="dropdown user-dropdown">
@@ -162,46 +164,46 @@ To change this template use File | Settings | File Templates.
 	</div>
 	
 	<!-- 中间 -->
-	<div id="center" style="position: absolute;top: 50px; bottom: 30px; left: 0px; right: 0px;">
+	<div id="center" style="position: absolute;top: 50px; bottom: 30px; left: 0; right: 0;">
 	
 		<!-- 导航 -->
-		<div id="navigation" style="left: 0px; width: 18%; position: relative; height: 100%; overflow:auto;">
+		<div id="navigation" style="left: 0; width: 18%; position: relative; height: 100%; overflow:auto;">
 		
 			<ul id="no1" class="nav nav-pills nav-stacked">
-				<li class="liClass"><a href="workbench/main/index.jsp" target="workareaFrame"><span class="glyphicon glyphicon-home"></span> 工作台</a></li>
-				<li class="liClass"><a href="javascript:void(0);" target="workareaFrame"><span class="glyphicon glyphicon-tag"></span> 动态</a></li>
-				<li class="liClass"><a href="javascript:void(0);" target="workareaFrame"><span class="glyphicon glyphicon-time"></span> 审批</a></li>
-				<li class="liClass"><a href="javascript:void(0);" target="workareaFrame"><span class="glyphicon glyphicon-user"></span> 客户公海</a></li>
-				<li class="liClass"><a href="workbench/activity/index.jsp" target="workareaFrame"><span class="glyphicon glyphicon-play-circle"></span> 市场活动</a></li>
-				<li class="liClass"><a href="workbench/clue/index.jsp" target="workareaFrame"><span class="glyphicon glyphicon-search"></span> 线索（潜在客户）</a></li>
-				<li class="liClass"><a href="workbench/customer/index.jsp" target="workareaFrame"><span class="glyphicon glyphicon-user"></span> 客户</a></li>
-				<li class="liClass"><a href="workbench/contacts/index.jsp" target="workareaFrame"><span class="glyphicon glyphicon-earphone"></span> 联系人</a></li>
-				<li class="liClass"><a href="workbench/transaction/index.jsp" target="workareaFrame"><span class="glyphicon glyphicon-usd"></span> 交易（商机）</a></li>
-				<li class="liClass"><a href="workbench/visit/index.jsp" target="workareaFrame"><span class="glyphicon glyphicon-phone-alt"></span> 售后回访</a></li>
+				<li class="liClass"><a href="workbench/main/index.jsp" target="workAreaFrame"><span class="glyphicon glyphicon-home"></span> 工作台</a></li>
+				<li class="liClass"><a href="javascript:void(0);" target="workAreaFrame"><span class="glyphicon glyphicon-tag"></span> 动态</a></li>
+				<li class="liClass"><a href="javascript:void(0);" target="workAreaFrame"><span class="glyphicon glyphicon-time"></span> 审批</a></li>
+				<li class="liClass"><a href="javascript:void(0);" target="workAreaFrame"><span class="glyphicon glyphicon-user"></span> 客户公海</a></li>
+				<li class="liClass"><a href="workbench/activity/index.jsp" target="workAreaFrame"><span class="glyphicon glyphicon-play-circle"></span> 市场活动</a></li>
+				<li class="liClass"><a href="workbench/clue/index.jsp" target="workAreaFrame"><span class="glyphicon glyphicon-search"></span> 线索（潜在客户）</a></li>
+				<li class="liClass"><a href="workbench/customer/index.jsp" target="workAreaFrame"><span class="glyphicon glyphicon-user"></span> 客户</a></li>
+				<li class="liClass"><a href="workbench/contacts/index.jsp" target="workAreaFrame"><span class="glyphicon glyphicon-earphone"></span> 联系人</a></li>
+				<li class="liClass"><a href="workbench/transaction/index.jsp" target="workAreaFrame"><span class="glyphicon glyphicon-usd"></span> 交易（商机）</a></li>
+				<li class="liClass"><a href="workbench/visit/index.jsp" target="workAreaFrame"><span class="glyphicon glyphicon-phone-alt"></span> 售后回访</a></li>
 				<li class="liClass">
 					<a href="#no2" class="collapsed" data-toggle="collapse"><span class="glyphicon glyphicon-stats"></span> 统计图表</a>
 					<ul id="no2" class="nav nav-pills nav-stacked collapse">
-						<li class="liClass"><a href="workbench/chart/activity/index.jsp" target="workareaFrame">&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span> 市场活动统计图表</a></li>
-						<li class="liClass"><a href="workbench/chart/clue/index.jsp" target="workareaFrame">&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span> 线索统计图表</a></li>
-						<li class="liClass"><a href="workbench/chart/customerAndContacts/index.jsp" target="workareaFrame">&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span> 客户和联系人统计图表</a></li>
-						<li class="liClass"><a href="workbench/chart/transaction/index.jsp" target="workareaFrame">&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span> 交易统计图表</a></li>
+						<li class="liClass"><a href="workbench/chart/activity/index.jsp" target="workAreaFrame">&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span> 市场活动统计图表</a></li>
+						<li class="liClass"><a href="workbench/chart/clue/index.jsp" target="workAreaFrame">&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span> 线索统计图表</a></li>
+						<li class="liClass"><a href="workbench/chart/customerAndContacts/index.jsp" target="workAreaFrame">&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span> 客户和联系人统计图表</a></li>
+						<li class="liClass"><a href="workbench/chart/transaction/index.jsp" target="workAreaFrame">&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span> 交易统计图表</a></li>
 					</ul>
 				</li>
-				<li class="liClass"><a href="javascript:void(0);" target="workareaFrame"><span class="glyphicon glyphicon-file"></span> 报表</a></li>
-				<li class="liClass"><a href="javascript:void(0);" target="workareaFrame"><span class="glyphicon glyphicon-shopping-cart"></span> 销售订单</a></li>
-				<li class="liClass"><a href="javascript:void(0);" target="workareaFrame"><span class="glyphicon glyphicon-send"></span> 发货单</a></li>
-				<li class="liClass"><a href="javascript:void(0);" target="workareaFrame"><span class="glyphicon glyphicon-earphone"></span> 跟进</a></li>
-				<li class="liClass"><a href="javascript:void(0);" target="workareaFrame"><span class="glyphicon glyphicon-leaf"></span> 产品</a></li>
-				<li class="liClass"><a href="javascript:void(0);" target="workareaFrame"><span class="glyphicon glyphicon-usd"></span> 报价</a></li>
+				<li class="liClass"><a href="javascript:void(0);" target="workAreaFrame"><span class="glyphicon glyphicon-file"></span> 报表</a></li>
+				<li class="liClass"><a href="javascript:void(0);" target="workAreaFrame"><span class="glyphicon glyphicon-shopping-cart"></span> 销售订单</a></li>
+				<li class="liClass"><a href="javascript:void(0);" target="workAreaFrame"><span class="glyphicon glyphicon-send"></span> 发货单</a></li>
+				<li class="liClass"><a href="javascript:void(0);" target="workAreaFrame"><span class="glyphicon glyphicon-earphone"></span> 跟进</a></li>
+				<li class="liClass"><a href="javascript:void(0);" target="workAreaFrame"><span class="glyphicon glyphicon-leaf"></span> 产品</a></li>
+				<li class="liClass"><a href="javascript:void(0);" target="workAreaFrame"><span class="glyphicon glyphicon-usd"></span> 报价</a></li>
 			</ul>
 			
 			<!-- 分割线 -->
-			<div id="divider1" style="position: absolute; top : 0px; right: 0px; width: 1px; height: 100% ; background-color: #B3B3B3;"></div>
+			<div id="divider1" style="position: absolute; top : 0; right: 0; width: 1px; height: 100% ; background-color: #B3B3B3;"></div>
 		</div>
 		
 		<!-- 工作区 -->
-		<div id="workarea" style="position: absolute; top : 0px; left: 18%; width: 82%; height: 100%;">
-			<iframe style="border-width: 0px; width: 100%; height: 100%;" name="workareaFrame"></iframe>
+		<div id="workArea" style="position: absolute; top : 0; left: 18%; width: 82%; height: 100%;">
+			<iframe style="border-width: 0; width: 100%; height: 100%;" name="workAreaFrame"></iframe>
 		</div>
 		
 	</div>
@@ -209,7 +211,7 @@ To change this template use File | Settings | File Templates.
 	<div id="divider2" style="height: 1px; width: 100%; position: absolute;bottom: 30px; background-color: #B3B3B3;"></div>
 	
 	<!-- 底部 -->
-	<div id="down" style="height: 30px; width: 100%; position: absolute;bottom: 0px;"></div>
+	<div id="down" style="height: 30px; width: 100%; position: absolute;bottom: 0;"></div>
 	
 </body>
 </html>

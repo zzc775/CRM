@@ -13,6 +13,7 @@ To change this template use File | Settings | File Templates.
 <head>
 	<base href="<%=basePath%>">
 <meta charset="UTF-8">
+	<title></title>
 <link href="jquery/bootstrap_3.3.0/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
 <script type="text/javascript" src="jquery/jquery-1.11.1-min.js"></script>
 <script type="text/javascript" src="jquery/bootstrap_3.3.0/js/bootstrap.min.js"></script>

@@ -5,10 +5,89 @@
 
 <mapper namespace="com.zzc775.crm.workbench.dao.ActivityDao">
     <insert id="save" >
-        insert into tbl_activity (id, owner, name, startDate, endDate, cost, description, createTime, createBy) value (
+        insert into tbl_activity value (
             #{id},#{owner},#{name},
             #{startDate},#{endDate},#{cost},
-            #{describe},#{createTime},#{createBy})
+            #{description},#{createTime},#{createBy},
+            #{editTime},#{editBy})
     </insert>
+    <update id="update">
+        update tbl_activity set name=#{name},owner=#{owner},startDate=#{startDate},
+                                endDate=#{endDate},cost=#{cost},description=#{description},
+                                editTime=#{editTime},editBy=#{editBy}
+        where id = #{id}
+    </update>
+    <delete id="delete">
+        delete from tbl_activity where id in
+        <foreach collection="array" open="(" item="id" separator="," close=")" >
+            #{id}
+        </foreach>
+    </delete>
+
+
+    <select id="getTotal" resultType="int">
+        select count(*)
+        from tbl_activity a join tbl_user u on a.owner=u.id
+        <where>
+            <if test="name!=null and name!=''">
+                and a.name like '%' #{name} '%'
+            </if>
+            <if test="owner!=null and owner!=''">
+                and u.name like '%' #{owner} '%'
+            </if>
+            <if test="startDate!=null and startDate!=''">
+                and startDate &gt;= #{startDate}
+            </if>
+            <if test="endDate!=null and endDate!=''">
+                and endDate &lt;= #{endDate}
+            </if>
+        </where>
+    </select>
+
+
+    <select id="getActivityList" resultType="activity">
+        select
+        a.id as id,
+        a.name as name,
+        u.name as owner,
+        startDate,
+        endDate
+        from tbl_activity a join tbl_user u on a.owner=u.id
+        <where>
+            <if test="name!=null and name!=''">
+                and a.name like '%' #{name} '%'
+            </if>
+            <if test="owner!=null and owner!=''">
+                and u.name like '%' #{owner} '%'
+            </if>
+            <if test="startDate!=null and startDate!=''">
+                and startDate &gt;= #{startDate}
+            </if>
+            <if test="endDate!=null and endDate!=''">
+                and endDate &lt;= #{endDate}
+            </if>
+        </where>
+        order by a.startDate desc,a.name
+        limit #{offset},#{pageSize}
+
+    </select>
+    <select id="getById" resultType="Activity">
+        select * from tbl_activity where id=#{id}
+    </select>
+    <select id="getDetail" resultType="activity">
+        select a.id,
+               a.name,
+               u.name as owner,
+               startDate,
+               endDate,
+               cost,
+               description,
+               a.createBy,
+               a.createTime,
+               a.editBy,
+               a.editTime
+        from tbl_activity a join tbl_user u on a.owner=u.id
+        where a.id=#{id}
+    </select>
 
 </mapper>

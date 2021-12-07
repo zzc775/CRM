@@ -5,13 +5,14 @@ Date: 2021/11/3
 Time: 10:25
 To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <% String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 	request.getServerPort() + request.getContextPath() + "/";%>
 <!DOCTYPE html>
 <html>
 <head>
 	<base href="<%=basePath%>">
 	<meta charset="UTF-8">
+	<title></title>
 	<link href="jquery/bootstrap_3.3.0/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
 	<script type="text/javascript" src="jquery/jquery-1.11.1-min.js"></script>
 	<script type="text/javascript" src="jquery/bootstrap_3.3.0/js/bootstrap.min.js"></script>
@@ -22,17 +23,16 @@ To change this template use File | Settings | File Templates.
 			}
 
 			//页面加载完毕,使账号输入框自动获取焦点
-			$("#loginAct").focus();
+			$("#loginAct").trigger("focus");
 
 			//为登入按钮绑定登入事件
-			$("#submitBtn").click(function () {
+			$("#submitBtn").on("click",function () {
 				login();
 			});
 
-
 			//为登入窗口绑定回车按钮登入事件
-			$(window).keydown(function (event){
-				if (event.keyCode === 13){
+			$(window).on("keydown",function (event){
+				if (event.key === "Enter"){
 					login();
 				}
 			});
@@ -63,7 +63,7 @@ To change this template use File | Settings | File Templates.
 						document.location.href = "workbench/index.jsp";
 					}else{
 						//登入失败
-						$("#msg").text(data.msg);
+						$("#msg").text(data["msg"]);
 					}
 				}
 			})
@@ -71,15 +71,15 @@ To change this template use File | Settings | File Templates.
 	</script>
 </head>
 <body>
-	<div style="position: absolute; top: 0px; left: 0px; width: 60%;">
-		<img src="image/IMG_7114.JPG" style="width: 100%; height: 90%; position: relative; top: 50px;">
+	<div style="position: absolute; top: 0; left: 0; width: 60%;">
+		<img src="image/IMG_7114.JPG" style="width: 100%; height: 90%; position: relative; top: 50px;" >
 	</div>
 	<div id="top" style="height: 50px; background-color: #3C3C3C; width: 100%;">
-		<div style="position: absolute; top: 5px; left: 0px; font-size: 30px; font-weight: 400; color: white; font-family: 'times new roman'">CRM &nbsp;<span style="font-size: 12px;">&copy;2017&nbsp;动力节点</span></div>
+		<div style="position: absolute; top: 5px; left: 0; font-size: 30px; font-weight: 400; color: white; font-family: 'times new roman',serif">CRM &nbsp;<span style="font-size: 12px;">&copy;2017&nbsp;动力节点</span></div>
 	</div>
 	
 	<div style="position: absolute; top: 120px; right: 100px;width:450px;height:400px;border:1px solid #D5D5D5">
-		<div style="position: absolute; top: 0px; right: 60px;">
+		<div style="position: absolute; top: 0; right: 60px;">
 			<div class="page-header">
 				<h1>登录</h1>
 			</div>

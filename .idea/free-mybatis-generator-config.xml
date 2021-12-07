@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PersistentConfig">
+    <option name="historyConfigList">
+      <map>
+        <entry key="tbl_clue">
+          <value>
+            <Config>
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="src/main/java" />
+              <option name="daoName" value="ClueDao" />
+              <option name="daoPackage" value="com.zzc775.crm.workbench.dao" />
+              <option name="daoPostfix" value="Dao" />
+              <option name="modelMvnPath" value="src/main/java" />
+              <option name="modelName" value="Clue" />
+              <option name="modelPackage" value="com.zzc775.crm.workbench.domain" />
+              <option name="name" value="tbl_clue" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="tbl_clue" />
+              <option name="xmlMvnPath" value="src/main/java" />
+              <option name="xmlPackage" value="com.zzc775.crm.workbench.dao" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="tbl_clue_activity_relation">
+          <value>
+            <Config>
+              <option name="daoMvnPath" value="src/main/java" />
+              <option name="daoName" value="ClueActivityRelationDao" />
+              <option name="daoPackage" value="com.zzc775.crm.workbench.dao" />
+              <option name="daoPostfix" value="Dao" />
+              <option name="modelMvnPath" value="src/main/java" />
+              <option name="modelName" value="ClueActivityRelation" />
+              <option name="modelPackage" value="com.zzc775.crm.workbench.domain" />
+              <option name="name" value="tbl_clue_activity_relation" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="tbl_clue_activity_relation" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="xmlMvnPath" value="src/main/java" />
+              <option name="xmlPackage" value="com.zzc775.crm.workbench.dao" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="tbl_clue_remark">
+          <value>
+            <Config>
+              <option name="daoMvnPath" value="src/main/java" />
+              <option name="daoName" value="TblClueRemarkDao" />
+              <option name="daoPackage" value="com.zzc775.crm.workbench.dao" />
+              <option name="daoPostfix" value="Dao" />
+              <option name="modelMvnPath" value="src/main/java" />
+              <option name="modelName" value="TblClueRemark" />
+              <option name="modelPackage" value="com.zzc775.crm.workbench.domain" />
+              <option name="name" value="tbl_clue_remark" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="tbl_clue_remark" />
+              <option name="xmlMvnPath" value="src/main/java" />
+              <option name="xmlPackage" value="com.zzc775.crm.workbench.dao" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="tbl_contacts">
+          <value>
+            <Config>
+              <option name="daoMvnPath" value="src/main/java" />
+              <option name="daoName" value="TblContactsDao" />
+              <option name="daoPackage" value="com.zzc775.crm.workbench.dao" />
+              <option name="daoPostfix" value="Dao" />
+              <option name="modelMvnPath" value="src/main/java" />
+              <option name="modelName" value="TblContacts" />
+              <option name="modelPackage" value="com.zzc775.crm.workbench.domain" />
+              <option name="name" value="tbl_contacts" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="tbl_contacts" />
+              <option name="xmlMvnPath" value="src/main/java" />
+              <option name="xmlPackage" value="com.zzc775.crm.workbench.dao" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="tbl_contacts_activity_relation">
+          <value>
+            <Config>
+              <option name="daoMvnPath" value="src/main/java" />
+              <option name="daoName" value="TblContactsActivityRelationDao" />
+              <option name="daoPackage" value="com.zzc775.crm.workbench.dao" />
+              <option name="daoPostfix" value="Dao" />
+              <option name="modelMvnPath" value="src/main/java" />
+              <option name="modelName" value="TblContactsActivityRelation" />
+              <option name="modelPackage" value="com.zzc775.crm.workbench.domain" />
+              <option name="name" value="tbl_contacts_activity_relation" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="tbl_contacts_activity_relation" />
+              <option name="xmlMvnPath" value="src/main/java" />
+              <option name="xmlPackage" value="com.zzc775.crm.workbench.dao" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="tbl_contacts_remark">
+          <value>
+            <Config>
+              <option name="daoMvnPath" value="src/main/java" />
+              <option name="daoName" value="TblContactsRemarkDao" />
+              <option name="daoPackage" value="com.zzc775.crm.workbench.dao" />
+              <option name="daoPostfix" value="Dao" />
+              <option name="modelMvnPath" value="src/main/java" />
+              <option name="modelName" value="TblContactsRemark" />
+              <option name="modelPackage" value="com.zzc775.crm.workbench.domain" />
+              <option name="name" value="tbl_contacts_remark" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="tbl_contacts_remark" />
+              <option name="xmlMvnPath" value="src/main/java" />
+              <option name="xmlPackage" value="com.zzc775.crm.workbench.dao" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="tbl_customer">
+          <value>
+            <Config>
+              <option name="daoMvnPath" value="src/main/java" />
+              <option name="daoName" value="TblCustomerDao" />
+              <option name="daoPackage" value="com.zzc775.crm.workbench.dao" />
+              <option name="daoPostfix" value="Dao" />
+              <option name="modelMvnPath" value="src/main/java" />
+              <option name="modelName" value="TblCustomer" />
+              <option name="modelPackage" value="com.zzc775.crm.workbench.domain" />
+              <option name="name" value="tbl_customer" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="tbl_customer" />
+              <option name="xmlMvnPath" value="src/main/java" />
+              <option name="xmlPackage" value="com.zzc775.crm.workbench.dao" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="tbl_customer_remark">
+          <value>
+            <Config>
+              <option name="daoMvnPath" value="src/main/java" />
+              <option name="daoName" value="TblCustomerRemarkDao" />
+              <option name="daoPackage" value="com.zzc775.crm.workbench.dao" />
+              <option name="daoPostfix" value="Dao" />
+              <option name="modelMvnPath" value="src/main/java" />
+              <option name="modelName" value="TblCustomerRemark" />
+              <option name="modelPackage" value="com.zzc775.crm.workbench.domain" />
+              <option name="name" value="tbl_customer_remark" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="tbl_customer_remark" />
+              <option name="xmlMvnPath" value="src/main/java" />
+              <option name="xmlPackage" value="com.zzc775.crm.workbench.dao" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="tbl_dic_type">
+          <value>
+            <Config>
+              <option name="daoMvnPath" value="src/main/java" />
+              <option name="daoName" value="DicTypeDao" />
+              <option name="daoPackage" value="com.zzc775.crm.settings.dao" />
+              <option name="daoPostfix" value="Dao" />
+              <option name="modelMvnPath" value="src/main/java" />
+              <option name="modelName" value="DicType" />
+              <option name="modelPackage" value="com.zzc775.crm.settings.domian" />
+              <option name="name" value="tbl_dic_type" />
+              <option name="primaryKey" value="code" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="tbl_dic_type" />
+              <option name="xmlMvnPath" value="src/main/java" />
+              <option name="xmlPackage" value="com.zzc775.crm.settings.dao" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="tbl_dic_value">
+          <value>
+            <Config>
+              <option name="daoMvnPath" value="src/main/java" />
+              <option name="daoName" value="DicValueDao" />
+              <option name="daoPackage" value="com.zzc775.crm.settings.dao" />
+              <option name="daoPostfix" value="Dao" />
+              <option name="modelMvnPath" value="src/main/java" />
+              <option name="modelName" value="DicValue" />
+              <option name="modelPackage" value="com.zzc775.crm.settings.domain" />
+              <option name="name" value="tbl_dic_value" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="tbl_dic_value" />
+              <option name="xmlMvnPath" value="src/main/java" />
+              <option name="xmlPackage" value="com.zzc775.crm.settings.dao" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="tbl_tran">
+          <value>
+            <Config>
+              <option name="daoMvnPath" value="src/main/java" />
+              <option name="daoName" value="TblTranDao" />
+              <option name="daoPackage" value="com.zzc775.crm.workbench.dao" />
+              <option name="daoPostfix" value="Dao" />
+              <option name="modelMvnPath" value="src/main/java" />
+              <option name="modelName" value="TblTran" />
+              <option name="modelPackage" value="com.zzc775.crm.workbench.domain" />
+              <option name="name" value="tbl_tran" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="tbl_tran" />
+              <option name="xmlMvnPath" value="src/main/java" />
+              <option name="xmlPackage" value="com.zzc775.crm.workbench.dao" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="tbl_tran_history">
+          <value>
+            <Config>
+              <option name="daoMvnPath" value="src/main/java" />
+              <option name="daoName" value="TblTranHistoryDao" />
+              <option name="daoPackage" value="com.zzc775.crm.workbench.dao" />
+              <option name="daoPostfix" value="Dao" />
+              <option name="modelMvnPath" value="src/main/java" />
+              <option name="modelName" value="TblTranHistory" />
+              <option name="modelPackage" value="com.zzc775.crm.workbench.domain" />
+              <option name="name" value="tbl_tran_history" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="tbl_tran_history" />
+              <option name="xmlMvnPath" value="src/main/java" />
+              <option name="xmlPackage" value="com.zzc775.crm.workbench.dao" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="tbl_tran_remark">
+          <value>
+            <Config>
+              <option name="daoMvnPath" value="src/main/java" />
+              <option name="daoName" value="TblTranRemarkDao" />
+              <option name="daoPackage" value="com.zzc775.crm.workbench.dao" />
+              <option name="daoPostfix" value="Dao" />
+              <option name="modelMvnPath" value="src/main/java" />
+              <option name="modelName" value="TblTranRemark" />
+              <option name="modelPackage" value="com.zzc775.crm.workbench.domain" />
+              <option name="name" value="tbl_tran_remark" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="tbl_tran_remark" />
+              <option name="xmlMvnPath" value="src/main/java" />
+              <option name="xmlPackage" value="com.zzc775.crm.workbench.dao" />
+            </Config>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

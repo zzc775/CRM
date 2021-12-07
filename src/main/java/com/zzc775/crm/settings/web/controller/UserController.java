@@ -16,7 +16,7 @@ import java.util.Map;
 
 public class UserController extends HttpServlet {
     @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void service(HttpServletRequest request, HttpServletResponse response) {
         String url = request.getServletPath();
         System.out.println("进入UserController");
         if ("/settings/user/login.do".equals(url)){
@@ -34,10 +34,10 @@ public class UserController extends HttpServlet {
         String ip = request.getRemoteAddr();
 
         //获取UserService的代理类
-        UserService userService = (UserService) ServiceFactory.get(new UserServiceImpl());
+        UserService us = (UserService) ServiceFactory.get(new UserServiceImpl());
 
         try{
-            User user = userService.login(loginAct,loginPwd,ip);
+            User user = us.login(loginAct,loginPwd,ip);
             request.getSession().setAttribute("user",user);
             PrintJson.printJsonFlag(response,true);
         }catch (Exception e){

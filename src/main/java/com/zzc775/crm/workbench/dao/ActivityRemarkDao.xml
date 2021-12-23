@@ -26,7 +26,7 @@
             #{id}
         </foreach>
     </select>
-    <select id="getByAIds" resultType="activityRemark">
+    <select id="getByAId" resultType="activityRemark">
         select * from tbl_activity_remark where activityId=#{id}
     </select>
     <select id="getContentById" resultType="java.lang.String">

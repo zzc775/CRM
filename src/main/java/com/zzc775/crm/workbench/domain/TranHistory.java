@@ -8,19 +8,17 @@ package com.zzc775.crm.workbench.domain;
 public class TranHistory {
     private String id;
 
-    private String noteContent;
+    private String stage;
+
+    private String money;
+
+    private String expectedDate;
 
     private String createBy;
 
     private String createTime;
 
-    private String editBy;
-
-    private String editTime;
-
-    private String editFlag;
-
-    private String clueId;
+    private String tranId;
 
     public String getId() {
         return id;
@@ -30,12 +28,28 @@ public class TranHistory {
         this.id = id;
     }
 
-    public String getNoteContent() {
-        return noteContent;
+    public String getStage() {
+        return stage;
     }
 
-    public void setNoteContent(String noteContent) {
-        this.noteContent = noteContent;
+    public void setStage(String stage) {
+        this.stage = stage;
+    }
+
+    public String getMoney() {
+        return money;
+    }
+
+    public void setMoney(String money) {
+        this.money = money;
+    }
+
+    public String getExpectedDate() {
+        return expectedDate;
+    }
+
+    public void setExpectedDate(String expectedTime) {
+        this.expectedDate = expectedTime;
     }
 
     public String getCreateBy() {
@@ -54,35 +68,11 @@ public class TranHistory {
         this.createTime = createTime;
     }
 
-    public String getEditBy() {
-        return editBy;
+    public String getTranId() {
+        return tranId;
     }
 
-    public void setEditBy(String editBy) {
-        this.editBy = editBy;
-    }
-
-    public String getEditTime() {
-        return editTime;
-    }
-
-    public void setEditTime(String editTime) {
-        this.editTime = editTime;
-    }
-
-    public String getEditFlag() {
-        return editFlag;
-    }
-
-    public void setEditFlag(String editFlag) {
-        this.editFlag = editFlag;
-    }
-
-    public String getClueId() {
-        return clueId;
-    }
-
-    public void setClueId(String clueId) {
-        this.clueId = clueId;
+    public void setTranId(String tranId) {
+        this.tranId = tranId;
     }
 }

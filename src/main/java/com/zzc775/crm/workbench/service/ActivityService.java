@@ -28,4 +28,6 @@ public interface ActivityService {
     Map<String,Object> getRemarkContent(String id);
 
     boolean updateRemark(Map<String,String> map);
+
+    List<Activity> getListByName(String name);
 }

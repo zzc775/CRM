@@ -1,5 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zzc775.crm.workbench.dao.ContactsRemarkDao">
-
+    <insert id="add">
+        insert into tbl_contacts_remark
+            value (
+                   #{id}, #{noteContent}, #{createBy},
+                   #{createTime}, #{editBy}, #{editTime},
+                   #{editFlag}, #{contactsId}
+            )
+    </insert>
+    <update id="update">
+        update tbl_contacts_remark
+        set noteContent = #{noteContent},
+            editBy      = #{editBy},
+            editTime    = #{editTime},
+            editFlag    = #{editFlag}
+        where id = #{id}
+    </update>
+    <delete id="deleteByCIds">
+        delete from tbl_contacts_remark where contactsId in
+        <foreach collection="array" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+    <delete id="deleteById">
+        delete from tbl_contacts_remark where id = #{id}
+    </delete>
+    <select id="getCountByCIds" resultType="java.lang.Integer">
+        select count(id) from tbl_contacts_remark where contactsId in
+        <foreach collection="array" open="(" item="id" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
+    <select id="getList" resultType="com.zzc775.crm.workbench.domain.ContactsRemark">
+        select *
+        from tbl_contacts_remark
+        where contactsId = #{contactsId}
+    </select>
+    <select id="getContentById" resultType="java.lang.String">
+        select noteContent
+        from tbl_contacts_remark
+        where id = #{id}
+    </select>
 </mapper>

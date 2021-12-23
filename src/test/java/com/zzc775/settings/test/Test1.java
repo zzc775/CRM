@@ -5,6 +5,11 @@ import com.zzc775.crm.utils.SqlSessionUtil;
 import com.zzc775.crm.workbench.dao.ActivityDao;
 import com.zzc775.crm.workbench.domain.Activity;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +23,9 @@ import java.util.Map;
  * @Version 1.0
  **/
 public class Test1 {
-    public static void main(String[] args) {
 
+    public static void main(String[] args) throws SQLException {
     }
+
+    
 }

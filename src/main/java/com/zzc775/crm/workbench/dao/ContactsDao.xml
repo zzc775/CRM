@@ -1,5 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zzc775.crm.workbench.dao.ContactsDao">
+    <insert id="add">
+        insert into tbl_contacts
+            value (
+                   #{id}, #{owner}, #{source}, #{customerId},
+                   #{fullName}, #{appellation}, #{email},
+                   #{mphone}, #{job}, #{birth}, #{createBy}, #{createTime},
+                   #{editBy}, #{editTime}, #{description},
+                   #{contactSummary}, #{nextContactTime}, #{address}
+            )
+    </insert>
+    <update id="update">
+        update tbl_contacts
+        set owner          = #{owner},
+            source         = #{source},
+            customerId     = #{customerId},
+            fullName       = #{fullName},
+            appellation    = #{appellation},
+            email          = #{email},
+            mphone         = #{mphone},
+            job            = #{job},
+            birth          = #{birth},
+            editBy         = #{editBy},
+            editTime       = #{editTime},
+            description    = #{description},
+            contactSummary = #{contactSummary},
+            nextContactTime= #{nextContactTime},
+            address        = #{address}
+        where id = #{id}
+    </update>
+    <delete id="deleteByIds">
+        delete from tbl_contacts where id in
+        <foreach collection="array" open="(" separator="," close=")" item="id">
+            #{id}
+        </foreach>
+    </delete>
 
+    <select id="getByMPhone" resultType="com.zzc775.crm.workbench.domain.Contacts">
+        select *
+        from tbl_contacts
+        where mphone = #{mphone}
+    </select>
+    <select id="getList" resultType="com.zzc775.crm.workbench.domain.Contacts">
+        select c.id,
+               c.fullName,
+               cu.name as appellation,
+               u.name  as owner,
+               c.source,
+               birth
+        from tbl_contacts as c
+                 left join tbl_user as u on c.owner = u.id
+                 left join tbl_customer as cu on c.customerId = cu.id
+    </select>
+    <select id="getById" resultType="com.zzc775.crm.workbench.domain.Contacts">
+        select c.fullName,
+               cu.name as customerId,
+               c.owner,
+               c.source,
+               c.appellation,
+               c.email,
+               c.mphone,
+               c.job,
+               c.birth,
+               c.description,
+               c.contactSummary,
+               c.nextContactTime,
+               c.address
+        from tbl_contacts as c
+                 left join tbl_customer as cu on c.customerId = cu.id
+        where c.id = #{id}
+
+    </select>
+    <select id="getById1" resultType="com.zzc775.crm.workbench.domain.Contacts">
+        select c.id,
+               c.fullName,
+               cu.name as customerId,
+               u.name  as owner,
+               c.source,
+               c.birth,
+               c.appellation,
+               c.email,
+               c.mphone,
+               c.job,
+               c.createBy,
+               c.createTime,
+               c.editTime,
+               c.editBy,
+               c.description,
+               c.contactSummary,
+               c.nextContactTime,
+               c.address
+        from tbl_contacts as c
+                 left join tbl_user as u on c.owner = u.id
+                 left join tbl_customer as cu on c.customerId = cu.id
+        where c.id = #{id}
+    </select>
+    <select id="getListByName" resultType="com.zzc775.crm.workbench.domain.Contacts">
+        select id,
+        fullName,
+        email,
+        mphone
+        from tbl_contacts
+        <where>
+            <if test="name != null and name != ''">
+                and fullName like '%' #{name} '%'
+            </if>
+        </where>
+    </select>
 </mapper>

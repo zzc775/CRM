@@ -3,12 +3,19 @@ package com.zzc775.crm.workbench.domain;
 
 /**
  * tbl_clue_remark
- * @author 
+ *
+ * @author
  */
 public class Customer {
     private String id;
 
-    private String noteContent;
+    private String owner;
+
+    private String name;
+
+    private String website;
+
+    private String phone;
 
     private String createBy;
 
@@ -18,11 +25,13 @@ public class Customer {
 
     private String editTime;
 
-    private String editFlag;
+    private String contactSummary;
 
-    private String clueId;
+    private String nextContactTime;
 
-    private static final long serialVersionUID = 1L;
+    private String description;
+
+    private String address;
 
     public String getId() {
         return id;
@@ -32,12 +41,36 @@ public class Customer {
         this.id = id;
     }
 
-    public String getNoteContent() {
-        return noteContent;
+    public String getOwner() {
+        return owner;
     }
 
-    public void setNoteContent(String noteContent) {
-        this.noteContent = noteContent;
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getCreateBy() {
@@ -72,19 +105,35 @@ public class Customer {
         this.editTime = editTime;
     }
 
-    public String getEditFlag() {
-        return editFlag;
+    public String getContactSummary() {
+        return contactSummary;
     }
 
-    public void setEditFlag(String editFlag) {
-        this.editFlag = editFlag;
+    public void setContactSummary(String contactSummary) {
+        this.contactSummary = contactSummary;
     }
 
-    public String getClueId() {
-        return clueId;
+    public String getNextContactTime() {
+        return nextContactTime;
     }
 
-    public void setClueId(String clueId) {
-        this.clueId = clueId;
+    public void setNextContactTime(String nextContactTime) {
+        this.nextContactTime = nextContactTime;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

@@ -1,63 +1,155 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
-  <display-name>crm</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-  </welcome-file-list>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         id="WebApp_ID" version="2.5">
+    <display-name>crm</display-name>
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
 
-<!--  登入验证过滤器-->
-  <filter>
-    <filter-name>LoginFilter</filter-name>
-    <filter-class>com.zzc775.crm.web.filter.LoginFilter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>LoginFilter</filter-name>
-    <url-pattern>*.do</url-pattern>
-    <url-pattern>*.jsp</url-pattern>
-  </filter-mapping>
+    <!--  登入验证过滤器-->
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>com.zzc775.crm.web.filter.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>*.do</url-pattern>
+        <url-pattern>*.jsp</url-pattern>
+    </filter-mapping>
 
-<!--  解决中文乱码过滤器-->
-  <filter>
-    <filter-name>EncodingFilter</filter-name>
-    <filter-class>com.zzc775.crm.web.filter.EncodingFilter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>EncodingFilter</filter-name>
-    <url-pattern>*.do</url-pattern>
-  </filter-mapping>
+    <!--  解决中文乱码过滤器-->
+    <filter>
+        <filter-name>EncodingFilter</filter-name>
+        <filter-class>com.zzc775.crm.web.filter.EncodingFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>EncodingFilter</filter-name>
+        <url-pattern>*.do</url-pattern>
+    </filter-mapping>
 
-<!--  settings模块-->
 
-<!--  User控制器-->
-  <servlet>
-    <servlet-name>UserController</servlet-name>
-    <servlet-class>com.zzc775.crm.settings.web.controller.UserController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>UserController</servlet-name>
-    <url-pattern>/settings/user/login.do</url-pattern>
-  </servlet-mapping>
+    <!--  数据字典初始化-->
+    <listener>
+        <listener-class>com.zzc775.crm.web.listener.SysInitListener</listener-class>
+    </listener>
 
-<!--  workbench模块-->
+    <!--  settings模块-->
 
-<!--  Activity控制器-->
-  <servlet>
-    <servlet-name>ActivityController</servlet-name>
-    <servlet-class>com.zzc775.crm.workbench.web.controller.ActivityController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ActivityController</servlet-name>
-    <url-pattern>/workbench/activity/getUserList.do</url-pattern>
-    <url-pattern>/workbench/activity/save.do</url-pattern>
-    <url-pattern>/workbench/activity/getActivityList.do</url-pattern>
-    <url-pattern>/workbench/activity/delete.do</url-pattern>
-    <url-pattern>/workbench/activity/get.do</url-pattern>
-    <url-pattern>/workbench/activity/update.do</url-pattern>
-    <url-pattern>/workbench/activity/detail.do</url-pattern>
-    <url-pattern>/workbench/activity/getRemarkList.do</url-pattern>
-    <url-pattern>/workbench/activity/remarkSave.do</url-pattern>
-    <url-pattern>/workbench/activity/deleteRemark.do</url-pattern>
-    <url-pattern>/workbench/activity/getRemarkContent.do</url-pattern>
-    <url-pattern>/workbench/activity/updateRemark.do</url-pattern>
-  </servlet-mapping>
+    <!--  User控制器-->
+    <servlet>
+        <servlet-name>UserController</servlet-name>
+        <servlet-class>com.zzc775.crm.settings.web.controller.UserController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserController</servlet-name>
+        <url-pattern>/settings/user/login.do</url-pattern>
+    </servlet-mapping>
+
+    <!--  workbench模块-->
+
+    <!--  Activity控制器-->
+    <servlet>
+        <servlet-name>ActivityController</servlet-name>
+        <servlet-class>com.zzc775.crm.workbench.web.controller.ActivityController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ActivityController</servlet-name>
+        <url-pattern>/workbench/activity/getUserList.do</url-pattern>
+        <url-pattern>/workbench/activity/save.do</url-pattern>
+        <url-pattern>/workbench/activity/getActivityList.do</url-pattern>
+        <url-pattern>/workbench/activity/delete.do</url-pattern>
+        <url-pattern>/workbench/activity/get.do</url-pattern>
+        <url-pattern>/workbench/activity/update.do</url-pattern>
+        <url-pattern>/workbench/activity/detail.do</url-pattern>
+        <url-pattern>/workbench/activity/getRemarkList.do</url-pattern>
+        <url-pattern>/workbench/activity/remarkSave.do</url-pattern>
+        <url-pattern>/workbench/activity/deleteRemark.do</url-pattern>
+        <url-pattern>/workbench/activity/getRemarkContent.do</url-pattern>
+        <url-pattern>/workbench/activity/updateRemark.do</url-pattern>
+    </servlet-mapping>
+
+    <!--  clue模块-->
+    <servlet>
+        <servlet-name>ClueController</servlet-name>
+        <servlet-class>com.zzc775.crm.workbench.web.controller.ClueController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ClueController</servlet-name>
+        <url-pattern>/workbench/clue/getUserList.do</url-pattern>
+        <url-pattern>/workbench/clue/getList.do</url-pattern>
+        <url-pattern>/workbench/clue/save.do</url-pattern>
+        <url-pattern>/workbench/clue/detail.do</url-pattern>
+        <url-pattern>/workbench/clue/delete.do</url-pattern>
+        <url-pattern>/workbench/clue/get.do</url-pattern>
+        <url-pattern>/workbench/clue/update.do</url-pattern>
+        <url-pattern>/workbench/clue/getRelation.do</url-pattern>
+        <url-pattern>/workbench/clue/removeRelation.do</url-pattern>
+        <url-pattern>/workbench/clue/getActivityList.do</url-pattern>
+        <url-pattern>/workbench/clue/addRelation.do</url-pattern>
+        <url-pattern>/workbench/clue/convert.do</url-pattern>
+        <url-pattern>/workbench/clue/getRemarkList.do</url-pattern>
+        <url-pattern>/workbench/clue/saveRemark.do</url-pattern>
+        <url-pattern>/workbench/clue/deleteRemark.do</url-pattern>
+        <url-pattern>/workbench/clue/getRemarkContent.do</url-pattern>
+        <url-pattern>/workbench/clue/updateRemark.do</url-pattern>
+    </servlet-mapping>
+
+    <!--  contacts模块-->
+    <servlet>
+        <servlet-name>ContactsController</servlet-name>
+        <servlet-class>com.zzc775.crm.workbench.web.controller.ContactsController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ContactsController</servlet-name>
+        <url-pattern>/workbench/contacts/getList.do</url-pattern>
+        <url-pattern>/workbench/contacts/getUserList.do</url-pattern>
+        <url-pattern>/workbench/contacts/getCustomerList.do</url-pattern>
+        <url-pattern>/workbench/contacts/add.do</url-pattern>
+        <url-pattern>/workbench/contacts/get.do</url-pattern>
+        <url-pattern>/workbench/contacts/update.do</url-pattern>
+        <url-pattern>/workbench/contacts/delete.do</url-pattern>
+        <url-pattern>/workbench/contacts/detail.do</url-pattern>
+        <url-pattern>/workbench/contacts/getRemarkList.do</url-pattern>
+        <url-pattern>/workbench/contacts/getTranList.do</url-pattern>
+        <url-pattern>/workbench/contacts/getRelationList.do</url-pattern>
+        <url-pattern>/workbench/contacts/removeRelation.do</url-pattern>
+        <url-pattern>/workbench/contacts/deleteTran.do</url-pattern>
+        <url-pattern>/workbench/contacts/saveRemark.do</url-pattern>
+        <url-pattern>/workbench/contacts/getRemarkContent.do</url-pattern>
+        <url-pattern>/workbench/contacts/updateRemark.do</url-pattern>
+        <url-pattern>/workbench/contacts/deleteRemark.do</url-pattern>
+        <url-pattern>/workbench/contacts/getActivityList.do</url-pattern>
+        <url-pattern>/workbench/contacts/createRelation.do</url-pattern>
+    </servlet-mapping>
+    <!--  customer模块-->
+    <servlet>
+        <servlet-name>CustomerServlet</servlet-name>
+        <servlet-class>com.zzc775.crm.workbench.web.controller.CustomerController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CustomerServlet</servlet-name>
+        <url-pattern>/workbench/customer/getList.do</url-pattern>
+    </servlet-mapping>
+<!--    tran模块-->
+    <servlet>
+        <servlet-name>TranController</servlet-name>
+        <servlet-class>com.zzc775.crm.workbench.web.controller.TranController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TranController</servlet-name>
+        <url-pattern>/workbench/tran/getList.do</url-pattern>
+        <url-pattern>/workbench/tran/getCustomerList.do</url-pattern>
+        <url-pattern>/workbench/tran/getUserList.do</url-pattern>
+        <url-pattern>/workbench/tran/getActivityList.do</url-pattern>
+        <url-pattern>/workbench/tran/getContactsList.do</url-pattern>
+        <url-pattern>/workbench/tran/save.do</url-pattern>
+        <url-pattern>/workbench/tran/detail.do</url-pattern>
+        <url-pattern>/workbench/tran/getRemarkList.do</url-pattern>
+        <url-pattern>/workbench/tran/getHistoryList.do</url-pattern>
+        <url-pattern>/workbench/tran/saveRemark.do</url-pattern>
+        <url-pattern>/workbench/tran/getRemarkContent.do</url-pattern>
+        <url-pattern>/workbench/tran/updateRemark.do</url-pattern>
+        <url-pattern>/workbench/tran/deleteRemark.do</url-pattern>
+    </servlet-mapping>
 </web-app>

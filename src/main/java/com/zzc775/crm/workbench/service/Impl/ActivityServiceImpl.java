@@ -35,7 +35,7 @@ public class ActivityServiceImpl implements ActivityService {
     public PaginationVO<Activity> getActivityList(Map<String, Object> map) {
         PaginationVO<Activity> paginationVO = new PaginationVO();
         int total = activityDao.getTotal(map);
-        List<Activity> activityList = activityDao.getActivityList(map);
+        List<Activity> activityList = activityDao.getList(map);
         paginationVO.setTotal(total);
         paginationVO.setDataList(activityList);
         return paginationVO;
@@ -78,7 +78,7 @@ public class ActivityServiceImpl implements ActivityService {
 
     @Override
     public List<ActivityRemark> getRemarkList(String id) {
-        return activityRemarkDao.getByAIds(id);
+        return activityRemarkDao.getByAId(id);
     }
 
     @Override
@@ -106,5 +106,10 @@ public class ActivityServiceImpl implements ActivityService {
     @Override
     public boolean updateRemark(Map<String,String> map) {
         return activityRemarkDao.update(map) == 1;
+    }
+
+    @Override
+    public List<Activity> getListByName(String name) {
+        return activityDao.getListByName(name);
     }
 }

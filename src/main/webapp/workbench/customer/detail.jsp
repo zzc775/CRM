@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <% String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/";%>
 <!DOCTYPE html>
 <html>
@@ -125,21 +126,9 @@
 						<label for="create-clueSource" class="col-sm-2 control-label">来源</label>
 						<div class="col-sm-10" style="width: 300px;">
 							<select class="form-control" id="create-clueSource">
-								<option></option>
-								<option>广告</option>
-								<option>推销电话</option>
-								<option>员工介绍</option>
-								<option>外部介绍</option>
-								<option>在线商场</option>
-								<option>合作伙伴</option>
-								<option>公开媒介</option>
-								<option>销售邮件</option>
-								<option>合作伙伴研讨会</option>
-								<option>内部研讨会</option>
-								<option>交易会</option>
-								<option>web下载</option>
-								<option>web调研</option>
-								<option>聊天</option>
+								<c:forEach items="${source}" var="c">
+									<option value="${c.value}">${c.text}</option>
+								</c:forEach>
 							</select>
 						</div>
 					</div>
@@ -153,12 +142,9 @@
 						<label for="create-call" class="col-sm-2 control-label">称呼</label>
 						<div class="col-sm-10" style="width: 300px;">
 							<select class="form-control" id="create-call">
-								<option></option>
-								<option>先生</option>
-								<option>夫人</option>
-								<option>女士</option>
-								<option>博士</option>
-								<option>教授</option>
+								<c:forEach items="${appelltaion}" var="c">
+									<option value="${c.value}" >${c.text}</option>
+								</c:forEach>
 							</select>
 						</div>
 

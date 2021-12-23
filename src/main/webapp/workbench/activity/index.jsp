@@ -50,7 +50,7 @@ To change this template use File | Settings | File Templates.
                 data: {
                     "pageNo": pageNo,
                     "pageSize": pageSize,
-                    "name":  $("#search-name").val().trim(),
+                    "name": $("#search-name").val().trim(),
                     "owner": $("#search-owner").val().trim(),
                     "startDate": $("#search-startDate").val().trim(),
                     "endDate": $("#search-endDate").val().trim()
@@ -63,7 +63,7 @@ To change this template use File | Settings | File Templates.
                     $.each(data["dataList"], function (i, n) {
                         htmlStr += "<tr class='active'>" +
                             "<td><input type='checkbox' name='activity-select' value='" + n.id + "'/></td>" +
-                            "<td><a style='text-decoration: none; cursor: pointer;' onclick=\"window.location.href='workbench/activity/detail.do?id=" + n.id +"';\">" + n.name + "</a></td>" +
+                            "<td><a style='text-decoration: none; cursor: pointer;' onclick=\"window.location.href='workbench/activity/detail.do?id=" + n.id + "';\">" + n.name + "</a></td>" +
                             "<td>" + n.owner + "</td>" +
                             "<td> " + n.startDate + " </td>" +
                             "<td> " + n.endDate + " </td>" +
@@ -72,21 +72,73 @@ To change this template use File | Settings | File Templates.
                     $("#marketActivityList").html(htmlStr);
                     let totalPages = data.total % pageSize === 0 ? data.total / pageSize : parseInt((data.total / pageSize + 1).toString());
                     $("#activityPage").bs_pagination({
-                        currentPage: pageNo, // 页码
-                        rowsPerPage: pageSize, // 每页显示的记录条数
-                        maxRowsPerPage: 20, // 每页最多显示的记录条数
-                        totalPages: totalPages, // 总页数
-                        totalRows: data.total, // 总记录条数
+                        currentPage: pageNo,
+                        rowsPerPage: pageSize,//默认每页显示页码数量
+                        maxRowsPerPage: 20,//最大每页显示页码数量
+                        totalPages: totalPages,//总页数
+                        totalRows: data.total,
 
-                        visiblePageLinks: 3, // 显示几个卡片
+
+                        visiblePageLinks: 5,//可视的每页显示页码数量
+
 
                         showGoToPage: true,
-                        showRowsPerPage: true,
-                        showRowsInfo: true,
-                        showRowsDefaultInfo: true,
+                        showRowsPerPage: false,
+                        showRowsInfo: false,
+                        showRowsDefaultInfo: false,//是否显示右侧的记录信息
+
+
+                        directURL: false, // or a function with current page as argument
+                        disableTextSelectionInNavPane: true, // disable text selection and double click
+
+
+                        // bootstrap_version: "3",
+
+
+                        // bootstrap 3
+                        // containerClass: "height: 50px; position: relative;top: 60px;",
+                        // mainWrapperClass: "row",
+                        //
+                        //
+                        // navListContainerClass: "position: relative;top: -88px; left: 285px;",
+                        // navListWrapperClass: "row",
+                        // navListClass: "pagination",
+                        // navListActiveItemClass: "active",
+
+
+                        // navGoToPageContainerClass: "col-xs-6 col-sm-4 col-md-2 row-space",
+                        // navGoToPageIconClass: "glyphicon glyphicon-arrow-right",
+                        // navGoToPageClass: "form-control small-input",
+                        //
+                        //
+                        // navRowsPerPageContainerClass: "col-xs-6 col-sm-4 col-md-2 row-space",
+                        // navRowsPerPageIconClass: "glyphicon glyphicon-th-list",
+                        // navRowsPerPageClass: "form-control small-input",
+                        //
+                        //
+                        // navInfoContainerClass: "col-xs-12 col-sm-4 col-md-2 row-space",
+                        // navInfoClass: "",
+
+
+                        // element IDs
+                        // nav_list_id_prefix: "nav_list_",
+                        // nav_top_id_prefix: "top_",
+                        // nav_prev_id_prefix: "prev_",
+                        // nav_item_id_prefix: "nav_item_",
+                        // nav_next_id_prefix: "next_",
+                        // nav_last_id_prefix: "last_",
+                        //
+                        //
+                        // nav_goto_page_id_prefix: "goto_page_",
+                        // nav_rows_per_page_id_prefix: "rows_per_page_",
+                        // nav_rows_info_id_prefix: "rows_info_",
+
 
                         onChangePage: function (event, data) {
                             pageList(data.currentPage, data.rowsPerPage);
+                        },
+                        onLoad: function () {
+                            // returns page_num and rows_per_page on plugin load
                         }
                     });
                 }
@@ -130,153 +182,158 @@ To change this template use File | Settings | File Templates.
 
             //为创建按钮绑定事件
             $("#createBtn").on("click", function () {
-                // 通过js脚本打开模态窗口.获取模态窗口的jquery对象,调用 modal() 方法,
-                // 参数String: 1."show"  2."hide"隐藏
-                //在打开模态窗口之前先获取userList把其填充到所有者下拉框
-                //发送请求
-                $.ajax({
-                    url: "workbench/activity/getUserList.do",
-                    type: "get",
-                    dataType: "json",
-                    success: function (data) {
-                        let htmlStr;
-                        $.each(data, function (i, n) {
-                            htmlStr += "<option value='" + n.id + "'>" + n.name + "</option>";
-                        })
-                        $("#create-marketActivityOwner").html(htmlStr).val("${user.id}");
-                        //打开模态窗口
-                        $("#createActivityModal").modal("show");
-                    }
-                });
+                getUserList();
+                //打开模态窗口
+                $("#createActivityModal").modal("show");
             });
 
             //创建市场活动模态窗口中保存按钮的点击事件
             $("#saveBtn").on("click", function () {
-                $.ajax({
-                    url: "workbench/activity/save.do",
-                    data: {
-                        "owner": $("#create-marketActivityOwner").val().trim(),
-                        "name": $("#create-marketActivityName").val().trim(),
-                        "startDate": $("#create-startDate").val().trim(),
-                        "endDate": $("#create-endDate").val().trim(),
-                        "cost": $("#create-cost").val().trim(),
-                        "description": $("#create-describe").val().trim()
-                    },
-                    type: "post",
-                    dataType: "json",
-                    success: function (data) {
-                        //添加成功
-                        if (data.success) {
-                            //1.重置模态窗口
-                            $("#create-form")[0].reset();
-                            //2.关闭模态窗口
-                            $("#createActivityModal").modal("hide");
-                            //3.刷新活动列表
-
-                            pageList(1, 2);
-                        } else {
-                            //添加失败
-                            alert("添加失败")
-                        }
-                    }
-                })
+                createActivity();
             });
 
             //修改按钮事件绑定
             $("#editBtn").on("click", function () {
-                let obj = $("input[name='activity-select']:checked");
-                if (obj.length !== 0) {
-                    let id = obj[0].value;
-                    //获取activity信息并填充到修改模态窗口
-                    $.ajax({
-                        url: "workbench/activity/get.do",
-                        data: {"id": id},
-                        type: "get",
-                        dataType: "json",
-                        success: function (activity) {
-                            $("#edit-marketActivityName").val(activity.name);
-                            $("#edit-startDate").val(activity.startDate);
-                            $("#edit-endDate").val(activity.endDate);
-                            $("#edit-cost").val(activity.cost);
-                            $("#edit-describe").val(activity.description);
-                            // 通过js脚本打开模态窗口.获取模态窗口的jquery对象,调用modal()方法,
-                            // 参数String: 1."show"  2."hide"隐藏
-                            //在打开模态窗口之前先获取userList把其填充到所有者下拉框
-                            //发送请求
-                            $.ajax({
-                                url: "workbench/activity/getUserList.do",
-                                type: "get",
-                                dataType: "json",
-                                success: function (userList) {
-                                    let htmlStr;
-                                    $.each(userList, function (i, n) {
-                                        htmlStr += "<option value='" + n.id + "'>" + n.name + "</option>";
-                                    })
-                                    $("#edit-marketActivityOwner").html(htmlStr).val(activity.owner);
-                                    //打开模态窗口
-                                    $("#editActivityModal").modal("show");
-                                }
-                            });
-                        }
-                    });
-                }
+                getDetail(function (htmlStr) {
+                    $("#create-marketActivityOwner").html(htmlStr).val("${user.id}");
+                });
+
+
             });
 
             //修改模态窗口中更新按钮的事件绑定
-            $("#updateBtn").on("click",function () {
-                let id = $("input[name='activity-select']:checked")[0].value;
-                $.ajax({
-                    url:"workbench/activity/update.do",
-                    data:{
-                        "id":id,
-                        "owner":$("#edit-marketActivityOwner").val().trim(),
-                        "name": $("#edit-marketActivityName").val().trim(),
-                        "startDate":$("#edit-startDate").val().trim(),
-                        "endDate":$("#edit-endDate").val().trim(),
-                        "cost":$("#edit-cost").val().trim(),
-                        "description":$("#edit-describe").val().trim()
-                    },
-                    type:"post",
-                    dataType:"json",
-                    success:function (data) {
-                        if (data.success){
-                            $("#editActivityModal").modal("hide");
-                            pageList(1,3);
-                        }
-                    }
-                });
+            $("#updateBtn").on("click", function () {
+                updateActivity();
             });
 
             //删除按钮绑定点击事件
             $("#deleteBtn").on("click", function () {
-
-                let obj = $("input[name='activity-select']:checked");
-                if (obj.length !== 0) {
-                    //参数拼接
-                    let param = "";
-                    obj.each(function (i) {
-                        param += "id=" + this.value;
-                        if (i !== obj.length - 1) {
-                            param += "&";
-                        }
-                    });
-                    $.ajax({
-                        url: "workbench/activity/delete.do",
-                        data: param,
-                        dataType: "json",
-                        type: "get",
-                        success: function (data) {
-                            if (data.success) {
-                                //刷新activityList
-                                pageList(1, 3);
-                            } else {
-                                alert("删除失败");
-                            }
-                        }
-                    });
-                }
+                deleteActivity();
             });
         });
+
+        function getUserList(todo) {
+            $.ajax({
+                url: "workbench/activity/getUserList.do",
+                type: "get",
+                dataType: "json",
+                success: function (data) {
+                    var htmlStr;
+                    $.each(data, function (i, n) {
+                        htmlStr += "<option value='" + n.id + "'>" + n.name + "</option>";
+                    });
+                    todo(htmlStr);
+                }
+            });
+        }
+
+        function createActivity() {
+            $.ajax({
+                url: "workbench/activity/save.do",
+                data: {
+                    "owner": $("#create-marketActivityOwner").val().trim(),
+                    "name": $("#create-marketActivityName").val().trim(),
+                    "startDate": $("#create-startDate").val().trim(),
+                    "endDate": $("#create-endDate").val().trim(),
+                    "cost": $("#create-cost").val().trim(),
+                    "description": $("#create-describe").val().trim()
+                },
+                type: "post",
+                dataType: "json",
+                success: function (data) {
+                    //添加成功
+                    if (data.success) {
+                        //1.重置模态窗口
+                        $("#create-form")[0].reset();
+                        //2.关闭模态窗口
+                        $("#createActivityModal").modal("hide");
+                        //3.刷新活动列表
+
+                        pageList(1, 2);
+                    } else {
+                        //添加失败
+                        alert("添加失败")
+                    }
+                }
+            })
+        }
+
+        function getDetail() {
+            let obj = $("input[name='activity-select']:checked");
+            if (obj.length !== 0) {
+                let id = obj[0].value;
+                //获取activity信息并填充到修改模态窗口
+                $.ajax({
+                    url: "workbench/activity/get.do",
+                    data: {"id": id},
+                    type: "get",
+                    dataType: "json",
+                    success: function (activity) {
+                        $("#edit-marketActivityName").val(activity.name);
+                        $("#edit-startDate").val(activity.startDate);
+                        $("#edit-endDate").val(activity.endDate);
+                        $("#edit-cost").val(activity.cost);
+                        $("#edit-describe").val(activity.description);
+                        getUserList(function (htmlStr) {
+                            $("#edit-marketActivityOwner").html(htmlStr).val(activity.owner);
+                        });
+                    }
+                });
+                $("#editActivityModal").modal("show");
+            }
+        }
+
+        function updateActivity() {
+            let id = $("input[name='activity-select']:checked")[0].value;
+            $.ajax({
+                url: "workbench/activity/update.do",
+                data: {
+                    "id": id,
+                    "owner": $("#edit-marketActivityOwner").val().trim(),
+                    "name": $("#edit-marketActivityName").val().trim(),
+                    "startDate": $("#edit-startDate").val().trim(),
+                    "endDate": $("#edit-endDate").val().trim(),
+                    "cost": $("#edit-cost").val().trim(),
+                    "description": $("#edit-describe").val().trim()
+                },
+                type: "post",
+                dataType: "json",
+                success: function (data) {
+                    if (data.success) {
+                        $("#editActivityModal").modal("hide");
+                        pageList(1, 3);
+                    }
+                }
+            });
+        }
+
+        function deleteActivity() {
+            let obj = $("input[name='activity-select']:checked");
+            if (obj.length !== 0) {
+                //参数拼接
+                let param = "";
+                obj.each(function (i) {
+                    param += "id=" + this.value;
+                    if (i !== obj.length - 1) {
+                        param += "&";
+                    }
+                });
+                $.ajax({
+                    url: "workbench/activity/delete.do",
+                    data: param,
+                    dataType: "json",
+                    type: "get",
+                    success: function (data) {
+                        if (data.success) {
+                            //刷新activityList
+                            pageList(1, 3);
+                        } else {
+                            alert("删除失败");
+                        }
+                    }
+                });
+            }
+        }
     </script>
 </head>
 <body>
@@ -286,7 +343,6 @@ To change this template use File | Settings | File Templates.
 <input type="hidden" id="hidden-owner"/>
 <input type="hidden" id="hidden-startDate"/>
 <input type="hidden" id="hidden-endDate"/>
-
 
 
 <!-- 创建市场活动的模态窗口 -->
@@ -345,7 +401,6 @@ To change this template use File | Settings | File Templates.
                             <textarea class="form-control" rows="3" id="create-describe"></textarea>
                         </div>
                     </div>
-
                 </form>
 
             </div>
@@ -507,12 +562,10 @@ To change this template use File | Settings | File Templates.
                 </tbody>
             </table>
         </div>
-        <div style="height: 50px; position: relative;top: 30px;">
-            <%--      TODO:分页控件待优化,js参数得修改,关键字pageList();                --%>
-            <div id="activityPage"></div>
+        <div id="activityPage">
         </div>
     </div>
-
+    <%--    style=""--%>
 </div>
 </body>
 </html>

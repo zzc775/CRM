@@ -21,7 +21,7 @@ public class ContactsRemark {
 
     private String editFlag;
 
-    private String clueId;
+    private String contactsId;
 
 
     public String getId() {
@@ -80,11 +80,11 @@ public class ContactsRemark {
         this.editFlag = editFlag;
     }
 
-    public String getClueId() {
-        return clueId;
+    public String getContactsId() {
+        return contactsId;
     }
 
-    public void setClueId(String clueId) {
-        this.clueId = clueId;
+    public void setContactsId(String contactsId) {
+        this.contactsId = contactsId;
     }
 }

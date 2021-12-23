@@ -1,4 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zzc775.crm.workbench.dao.TranDao">
+    <insert id="add">
+        insert into tbl_tran
+            VALUE (
+                   #{id}, #{owner}, #{money}, #{name},
+                   #{expectedDate}, #{customerId}, #{stage}, #{type},
+                   #{source}, #{activityId}, #{contactsId}, #{createBy},
+                   #{createTime}, #{editBy}, #{editTime}, #{description},
+                   #{contactSummary}, #{nextContactTime}
+            )
+    </insert>
+    <delete id="deleteById">
+        delete
+        from tbl_tran
+        where id = #{id}
+    </delete>
+    <select id="getListByCId" resultType="com.zzc775.crm.workbench.domain.Tran">
+        select *
+        from tbl_tran
+        where contactsId = #{contactsId}
+    </select>
+    <select id="getList" resultType="com.zzc775.crm.workbench.domain.Tran">
+        select t.id         as id,
+               t.name       as name,
+               c.name       as customerId,
+               t.stage      as stage,
+               t.type       as type,
+               u.name       as owner,
+               t.source     as source,
+               con.fullName as contactsId
+        from tbl_tran as t
+                 left join tbl_customer as c on t.customerId = c.id
+                 left join tbl_contacts as con on con.id = t.contactsId
+                 left join tbl_user u on u.id = c.owner
+    </select>
+    <select id="getById" resultType="com.zzc775.crm.workbench.domain.Tran">
+        select t.id,
+               u.name as owner,
+               t.money,
+               t.name,
+               t.expectedDate,
+               c.name as customerId,
+               t.stage,
+               t.type,
+               t.source,
+               a.name as activityId,
+               con.fullName as contactsId,
+               t.createTime,
+               t.createBy,
+               t.editBy,
+               t.editTime,
+               t.description,
+               t.contactSummary,
+               t.nextContactTime
+        from tbl_tran t
+                 left join tbl_activity a on t.activityId = a.id
+                 left join tbl_customer c on t.customerId = c.id
+                 left join tbl_contacts con on t.contactsId = con.id
+                 left join tbl_user u on t.owner = u.id
+        where t.id = #{id}
+    </select>
 </mapper>

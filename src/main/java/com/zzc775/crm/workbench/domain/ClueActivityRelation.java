@@ -11,6 +11,8 @@ public class ClueActivityRelation {
 
     private String clueId;
 
+    private String activityId;
+
     public String getId() {
         return id;
     }
@@ -35,6 +37,12 @@ public class ClueActivityRelation {
         this.activityId = activityId;
     }
 
-    private String activityId;
+    public ClueActivityRelation() {
+    }
 
+    public ClueActivityRelation(String id, String clueId, String activityId) {
+        this.id = id;
+        this.clueId = clueId;
+        this.activityId = activityId;
+    }
 }

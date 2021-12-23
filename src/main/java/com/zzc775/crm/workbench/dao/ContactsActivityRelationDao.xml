@@ -2,4 +2,56 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zzc775.crm.workbench.dao.ContactsActivityRelationDao">
 
+    <insert id="add">
+        insert into tbl_contacts_activity_relation
+            value (#{id}, #{contactsId}, #{activityId})
+    </insert>
+    <insert id="addRelation">
+        insert into tbl_contacts_activity_relation value (#{id}, #{contactsId}, #{activityId})
+    </insert>
+    <delete id="deleteByIds">
+        delete from tbl_contacts_activity_relation where contactsId in
+        <foreach collection="array" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    <delete id="deleteById">
+        delete
+        from tbl_contacts_activity_relation
+        where id = #{id}
+    </delete>
+    <select id="getCountByIds" resultType="java.lang.Integer">
+        select count(id) from tbl_contacts_activity_relation where contactsId in
+        <foreach collection="array" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
+    <select id="getListByCId" resultType="activity">
+        select c.id        as id,
+               a.name      as name,
+               a.startDate as startDate,
+               a.endDate   as endDate,
+               u.name      as owner
+        from tbl_contacts_activity_relation as c
+                 left join tbl_activity as a on c.activityId = a.id
+                 left join tbl_user as u on a.owner = u.id
+        where contactsId = #{contactsId}
+    </select>
+    <select id="getActivityListByName" resultType="com.zzc775.crm.workbench.domain.Activity">
+        select a.id,
+        a.name,
+        a.startDate,
+        a.endDate,
+        u.name as owner
+        from tbl_activity as a
+        left join tbl_user as u on a.owner = u.id
+        <where>
+            <if test="name!=null and name!=''">
+                and a.name like '%' #{name} '%'
+            </if>
+            <if test="true">
+                and a.id not in (select activityId from tbl_contacts_activity_relation where contactsId = #{contactsId})
+            </if>
+        </where>
+    </select>
 </mapper>

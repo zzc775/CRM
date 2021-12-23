@@ -59,4 +59,5 @@ public class DicValue {
     public void setTypeCode(String typeCode) {
         this.typeCode = typeCode;
     }
+
 }

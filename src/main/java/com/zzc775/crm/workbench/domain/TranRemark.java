@@ -21,7 +21,7 @@ public class TranRemark {
 
     private String editFlag;
 
-    private String clueId;
+    private String tranId;
 
     public String getId() {
         return id;
@@ -79,11 +79,11 @@ public class TranRemark {
         this.editFlag = editFlag;
     }
 
-    public String getClueId() {
-        return clueId;
+    public String getTranId() {
+        return tranId;
     }
 
-    public void setClueId(String clueId) {
-        this.clueId = clueId;
+    public void setTranId(String tranId) {
+        this.tranId = tranId;
     }
 }

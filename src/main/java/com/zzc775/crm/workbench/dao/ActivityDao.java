@@ -7,7 +7,7 @@ import java.util.Map;
 
 public interface ActivityDao {
     int save(Activity activity);
-    List<Activity> getActivityList(Map<String, Object> map);
+    List<Activity> getList(Map<String, Object> map);
 
     int getTotal(Map<String,Object> map);
 
@@ -17,4 +17,6 @@ public interface ActivityDao {
     int update(Activity activity);
 
     Activity getDetail(String id);
+
+    List<Activity> getListByName(String name);
 }

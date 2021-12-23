@@ -8,7 +8,23 @@ package com.zzc775.crm.workbench.domain;
 public class Contacts {
     private String id;
 
-    private String noteContent;
+    private String owner;
+
+    private String source;
+
+    private String customerId;
+
+    private String fullName;
+
+    private String appellation;
+
+    private String email;
+
+    private String mphone;
+
+    private String job;
+
+    private String birth;
 
     private String createBy;
 
@@ -18,9 +34,13 @@ public class Contacts {
 
     private String editTime;
 
-    private String editFlag;
+    private String description;
 
-    private String clueId;
+    private String contactSummary;
+
+    private String nextContactTime;
+
+    private String address;
 
     public String getId() {
         return id;
@@ -30,12 +50,76 @@ public class Contacts {
         this.id = id;
     }
 
-    public String getNoteContent() {
-        return noteContent;
+    public String getOwner() {
+        return owner;
     }
 
-    public void setNoteContent(String noteContent) {
-        this.noteContent = noteContent;
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+
+    public String getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getAppellation() {
+        return appellation;
+    }
+
+    public void setAppellation(String appellation) {
+        this.appellation = appellation;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getMphone() {
+        return mphone;
+    }
+
+    public void setMphone(String mphone) {
+        this.mphone = mphone;
+    }
+
+    public String getJob() {
+        return job;
+    }
+
+    public void setJob(String job) {
+        this.job = job;
+    }
+
+    public String getBirth() {
+        return birth;
+    }
+
+    public void setBirth(String birth) {
+        this.birth = birth;
     }
 
     public String getCreateBy() {
@@ -70,19 +154,36 @@ public class Contacts {
         this.editTime = editTime;
     }
 
-    public String getEditFlag() {
-        return editFlag;
+    public String getDescription() {
+        return description;
     }
 
-    public void setEditFlag(String editFlag) {
-        this.editFlag = editFlag;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getClueId() {
-        return clueId;
+    public String getContactSummary() {
+        return contactSummary;
     }
 
-    public void setClueId(String clueId) {
-        this.clueId = clueId;
+    public void setContactSummary(String contactSummary) {
+        this.contactSummary = contactSummary;
     }
+
+    public String getNextContactTime() {
+        return nextContactTime;
+    }
+
+    public void setNextContactTime(String nextContactTime) {
+        this.nextContactTime = nextContactTime;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
 }

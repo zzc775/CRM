@@ -2,4 +2,35 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zzc775.crm.workbench.dao.CustomerDao">
 
+    <insert id="add">
+        insert into tbl_customer value (
+                                        #{id}, #{owner}, #{name}, #{website}, #{phone}, #{createBy}, #{createTime},
+                                        #{editBy}, #{editTime}, #{contactSummary}, #{nextContactTime}, #{description},
+                                        #{address}
+            )
+    </insert>
+    <select id="getByName" resultType="com.zzc775.crm.workbench.domain.Customer">
+        select *
+        from tbl_customer
+        where name = #{name}
+    </select>
+    <select id="getIdByName" resultType="java.lang.String">
+        select id
+        from tbl_customer
+        where name = #{name}
+    </select>
+    <select id="getList1" resultType="com.zzc775.crm.workbench.domain.Customer">
+        select c.id      as id,
+               c.name    as name,
+               u.name    as owner,
+               c.phone   as phone,
+               c.website as website
+        from tbl_customer as c
+                 left join tbl_user u on u.id = c.owner
+
+    </select>
+    <select id="getNameByName" resultType="java.lang.String">
+        select name
+        from tbl_customer where name like '%' #{name} '%'
+    </select>
 </mapper>

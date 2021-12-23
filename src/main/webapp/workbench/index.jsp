@@ -145,7 +145,7 @@ To change this template use File | Settings | File Templates.
 	
 	<!-- 顶部 -->
 	<div id="top" style="height: 50px; background-color: #3C3C3C; width: 100%;">
-		<div style="position: absolute; top: 5px; left: 0; font-size: 30px; font-weight: 400; color: white; font-family: 'times new roman',serif">CRM &nbsp;<span style="font-size: 12px;">&copy;2017&nbsp;动力节点</span></div>
+		<div style="position: absolute; top: 5px; left: 0; font-size: 30px; font-weight: 400; color: white; font-family: 'times new roman',serif">CRM &nbsp;<span style="font-size: 12px;">&copy;2021&nbsp;zzc775</span></div>
 		<div style="position: absolute; top: 15px; right: 15px;">
 			<ul>
 				<li class="dropdown user-dropdown">
@@ -170,16 +170,16 @@ To change this template use File | Settings | File Templates.
 		<div id="navigation" style="left: 0; width: 18%; position: relative; height: 100%; overflow:auto;">
 		
 			<ul id="no1" class="nav nav-pills nav-stacked">
-				<li class="liClass"><a href="workbench/main/index.jsp" target="workAreaFrame"><span class="glyphicon glyphicon-home"></span> 工作台</a></li>
-				<li class="liClass"><a href="javascript:void(0);" target="workAreaFrame"><span class="glyphicon glyphicon-tag"></span> 动态</a></li>
-				<li class="liClass"><a href="javascript:void(0);" target="workAreaFrame"><span class="glyphicon glyphicon-time"></span> 审批</a></li>
-				<li class="liClass"><a href="javascript:void(0);" target="workAreaFrame"><span class="glyphicon glyphicon-user"></span> 客户公海</a></li>
+				<li class="liClass"><a href="workbench/main/index.jsp" target="workAreaFrame"><span class="glyphicon glyphicon-home"></span> 主页介绍</a></li>
+<%--				<li class="liClass"><a href="javascript:void(0);" target="workAreaFrame"><span class="glyphicon glyphicon-tag"></span> 动态</a></li>--%>
+<%--				<li class="liClass"><a href="javascript:void(0);" target="workAreaFrame"><span class="glyphicon glyphicon-time"></span> 审批</a></li>--%>
+<%--				<li class="liClass"><a href="javascript:void(0);" target="workAreaFrame"><span class="glyphicon glyphicon-user"></span> 客户公海</a></li>--%>
 				<li class="liClass"><a href="workbench/activity/index.jsp" target="workAreaFrame"><span class="glyphicon glyphicon-play-circle"></span> 市场活动</a></li>
 				<li class="liClass"><a href="workbench/clue/index.jsp" target="workAreaFrame"><span class="glyphicon glyphicon-search"></span> 线索（潜在客户）</a></li>
 				<li class="liClass"><a href="workbench/customer/index.jsp" target="workAreaFrame"><span class="glyphicon glyphicon-user"></span> 客户</a></li>
 				<li class="liClass"><a href="workbench/contacts/index.jsp" target="workAreaFrame"><span class="glyphicon glyphicon-earphone"></span> 联系人</a></li>
-				<li class="liClass"><a href="workbench/transaction/index.jsp" target="workAreaFrame"><span class="glyphicon glyphicon-usd"></span> 交易（商机）</a></li>
-				<li class="liClass"><a href="workbench/visit/index.jsp" target="workAreaFrame"><span class="glyphicon glyphicon-phone-alt"></span> 售后回访</a></li>
+				<li class="liClass"><a href="workbench/tran/index.jsp" target="workAreaFrame"><span class="glyphicon glyphicon-usd"></span> 交易（商机）</a></li>
+<%--				<li class="liClass"><a href="workbench/visit/index.jsp" target="workAreaFrame"><span class="glyphicon glyphicon-phone-alt"></span> 售后回访</a></li>--%>
 				<li class="liClass">
 					<a href="#no2" class="collapsed" data-toggle="collapse"><span class="glyphicon glyphicon-stats"></span> 统计图表</a>
 					<ul id="no2" class="nav nav-pills nav-stacked collapse">
@@ -189,12 +189,12 @@ To change this template use File | Settings | File Templates.
 						<li class="liClass"><a href="workbench/chart/transaction/index.jsp" target="workAreaFrame">&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span> 交易统计图表</a></li>
 					</ul>
 				</li>
-				<li class="liClass"><a href="javascript:void(0);" target="workAreaFrame"><span class="glyphicon glyphicon-file"></span> 报表</a></li>
-				<li class="liClass"><a href="javascript:void(0);" target="workAreaFrame"><span class="glyphicon glyphicon-shopping-cart"></span> 销售订单</a></li>
-				<li class="liClass"><a href="javascript:void(0);" target="workAreaFrame"><span class="glyphicon glyphicon-send"></span> 发货单</a></li>
-				<li class="liClass"><a href="javascript:void(0);" target="workAreaFrame"><span class="glyphicon glyphicon-earphone"></span> 跟进</a></li>
-				<li class="liClass"><a href="javascript:void(0);" target="workAreaFrame"><span class="glyphicon glyphicon-leaf"></span> 产品</a></li>
-				<li class="liClass"><a href="javascript:void(0);" target="workAreaFrame"><span class="glyphicon glyphicon-usd"></span> 报价</a></li>
+<%--				<li class="liClass"><a href="javascript:void(0);" target="workAreaFrame"><span class="glyphicon glyphicon-file"></span> 报表</a></li>--%>
+<%--				<li class="liClass"><a href="javascript:void(0);" target="workAreaFrame"><span class="glyphicon glyphicon-shopping-cart"></span> 销售订单</a></li>--%>
+<%--				<li class="liClass"><a href="javascript:void(0);" target="workAreaFrame"><span class="glyphicon glyphicon-send"></span> 发货单</a></li>--%>
+<%--				<li class="liClass"><a href="javascript:void(0);" target="workAreaFrame"><span class="glyphicon glyphicon-earphone"></span> 跟进</a></li>--%>
+<%--				<li class="liClass"><a href="javascript:void(0);" target="workAreaFrame"><span class="glyphicon glyphicon-leaf"></span> 产品</a></li>--%>
+<%--				<li class="liClass"><a href="javascript:void(0);" target="workAreaFrame"><span class="glyphicon glyphicon-usd"></span> 报价</a></li>--%>
 			</ul>
 			
 			<!-- 分割线 -->

@@ -34,7 +34,7 @@ To change this template use File | Settings | File Templates.
                     cancelAndSaveBtnDefault = false;
                 }
             });
-            getRemarkList();
+
             $("#cancelBtn").on("click", function () {
                 //清空添加评论文本
                 $("#remark").val("");
@@ -45,36 +45,44 @@ To change this template use File | Settings | File Templates.
                 cancelAndSaveBtnDefault = true;
             });
 
+            //获取评论列表
+            getRemarkList();
 
             //给添加备注保存按钮添加事件
             $("#remark-saveBtn").on("click",function () {
-                $.ajax({
-                    url:"workbench/activity/remarkSave.do",
-                    data:{
-                        "activityId":"${activity.id}",
-                        "noteContent":$("#remark").val().trim()
-                    },
-                    type:"get",
-                    dataType:"json",
-                    success:function (data) {
-                        if (data.success){
-                            getRemarkList();
-                            $("#cancelBtn").trigger("click");
-                        }
-                    }
-                });
-            })
+                addRemark();
+            });
 
-
-
-
-
-
+            //更改评论提交按钮
+            $("#updateRemarkBtn").off().on("click",function () {
+                updateRemark();
+            });
         });
 
+        //
+
+        //添加评论
+        function addRemark(){
+            $.ajax({
+                url:"workbench/activity/remarkSave.do",
+                data:{
+                    "activityId":"${activity.id}",
+                    "noteContent":$("#remark").val().trim()
+                },
+                type:"get",
+                dataType:"json",
+                success:function (data) {
+                    if (data.success){
+                        getRemarkList();
+                        $("#cancelBtn").trigger("click");
+                    }
+                }
+            });
+        }
 
         //修改remark
         function editRemark(id) {
+            $("#remarkId").val(id)
             $.ajax({
                 url:"workbench/activity/getRemarkContent.do",
                 data:{
@@ -89,27 +97,26 @@ To change this template use File | Settings | File Templates.
                 }
             });
             $("#editRemarkModal").modal("show");
-
-            $("#updateRemarkBtn").off().on("click",function () {
-                $.ajax({
-                    url:"workbench/activity/updateRemark.do",
-                    data:{
-                        "id":id,
-                        "noteContent":$("#noteContent").val()
-                    },
-                    dataType:"json",
-                    type:"post",
-                    success: function (data) {
-                        if (data.success){
-                            $("#editRemarkModal").modal("hide");
-                            getRemarkList();
-                        }
-                    }
-                });
-            });
         }
 
+        function updateRemark() {
+            $.ajax({
+                url:"workbench/activity/updateRemark.do",
+                data:{
+                    "id":$("#remarkId").val(),
+                    "noteContent":$("#noteContent").val()
+                },
+                dataType:"json",
+                type:"post",
+                success: function (data) {
+                    if (data.success){
+                        getRemarkList();
+                        $("#editRemarkModal").modal("hide");
 
+                    }
+                }
+            });
+        }
 
         //删除remark
         function deleteRemark(id) {
@@ -161,7 +168,7 @@ To change this template use File | Settings | File Templates.
                             "<h5>" + remark.noteContent + "</h5>" +
                             "<span style='color: gray; '>市场活动</span> <span style='color: gray; '>-</span> <b>" + activityName + "</b> <small style='color: gray;'> " + (remark.editFlag? remark.editTime:remark.createTime) + " 由 " + remark.createBy + "</small>" +
                             "<div style='position: relative; left: 500px; top: -30px; height: 30px; width: 100px; display: none;'>" +
-                            "<a class='myHref' href='javascript:void(0);'><span class='glyphicon glyphicon-edit' onclick='editRemark(" + "\"" +remark.id + "\"" + ")' style='font-size: 20px; color: #E6E6E6;'></span></a>" +
+                            "<a class='myHref' href='javascript:void(0);'><span class='glyphicon glyphicon-edit' onclick='editRemark(\"" +remark.id + "\")' style='font-size: 20px; color: #E6E6E6;'></span></a>" +
                             "&nbsp;&nbsp;&nbsp;&nbsp;" +
                             "<a class='myHref' href='javascript:void(0);'><span class='glyphicon glyphicon-remove' onclick='deleteRemark(\"" + remark.id + "\")' style='font-size: 20px; color: #E6E6E6;'></span></a>" +
                             "</div>" +

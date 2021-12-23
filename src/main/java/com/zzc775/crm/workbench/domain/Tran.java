@@ -8,7 +8,25 @@ package com.zzc775.crm.workbench.domain;
 public class Tran {
     private String id;
 
-    private String noteContent;
+    private String owner;
+
+    private String money;
+
+    private String name;
+
+    private String expectedDate;
+
+    private String customerId;
+
+    private String stage;
+
+    private String type;
+
+    private String source;
+
+    private String activityId;
+
+    private String contactsId;
 
     private String createBy;
 
@@ -18,9 +36,11 @@ public class Tran {
 
     private String editTime;
 
-    private String editFlag;
+    private String description;
 
-    private String clueId;
+    private String contactSummary;
+
+    private String nextContactTime;
 
     public String getId() {
         return id;
@@ -30,12 +50,84 @@ public class Tran {
         this.id = id;
     }
 
-    public String getNoteContent() {
-        return noteContent;
+    public String getOwner() {
+        return owner;
     }
 
-    public void setNoteContent(String noteContent) {
-        this.noteContent = noteContent;
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    public String getMoney() {
+        return money;
+    }
+
+    public void setMoney(String money) {
+        this.money = money;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getExpectedDate() {
+        return expectedDate;
+    }
+
+    public void setExpectedDate(String expectedDate) {
+        this.expectedDate = expectedDate;
+    }
+
+    public String getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
+    }
+
+    public String getStage() {
+        return stage;
+    }
+
+    public void setStage(String stage) {
+        this.stage = stage;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+
+    public String getActivityId() {
+        return activityId;
+    }
+
+    public void setActivityId(String activityId) {
+        this.activityId = activityId;
+    }
+
+    public String getContactsId() {
+        return contactsId;
+    }
+
+    public void setContactsId(String contactsId) {
+        this.contactsId = contactsId;
     }
 
     public String getCreateBy() {
@@ -70,19 +162,51 @@ public class Tran {
         this.editTime = editTime;
     }
 
-    public String getEditFlag() {
-        return editFlag;
+    public String getDescription() {
+        return description;
     }
 
-    public void setEditFlag(String editFlag) {
-        this.editFlag = editFlag;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getClueId() {
-        return clueId;
+    public String getContactSummary() {
+        return contactSummary;
     }
 
-    public void setClueId(String clueId) {
-        this.clueId = clueId;
+    public void setContactSummary(String contactSummary) {
+        this.contactSummary = contactSummary;
+    }
+
+    public String getNextContactTime() {
+        return nextContactTime;
+    }
+
+    public void setNextContactTime(String nextContactTime) {
+        this.nextContactTime = nextContactTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Tran{" +
+                "id='" + id + '\'' +
+                ", owner='" + owner + '\'' +
+                ", money='" + money + '\'' +
+                ", name='" + name + '\'' +
+                ", expectedDate='" + expectedDate + '\'' +
+                ", customerId='" + customerId + '\'' +
+                ", stage='" + stage + '\'' +
+                ", type='" + type + '\'' +
+                ", source='" + source + '\'' +
+                ", activityId='" + activityId + '\'' +
+                ", contactsId='" + contactsId + '\'' +
+                ", createBy='" + createBy + '\'' +
+                ", createTime='" + createTime + '\'' +
+                ", editBy='" + editBy + '\'' +
+                ", editTime='" + editTime + '\'' +
+                ", description='" + description + '\'' +
+                ", contactSummary='" + contactSummary + '\'' +
+                ", nextContactTime='" + nextContactTime + '\'' +
+                '}';
     }
 }

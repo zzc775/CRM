@@ -10,7 +10,7 @@ public interface ActivityRemarkDao {
 
     int deleteByAIds(String[] ids);
 
-    List<ActivityRemark> getByAIds(String id);
+    List<ActivityRemark> getByAId(String id);
 
     int save(ActivityRemark activityRemark);
 

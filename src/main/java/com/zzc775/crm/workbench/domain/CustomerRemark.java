@@ -19,7 +19,7 @@ public class CustomerRemark {
 
     private String editFlag;
 
-    private String clueId;
+    private String customerId;
 
     public String getId() {
         return id;
@@ -77,11 +77,11 @@ public class CustomerRemark {
         this.editFlag = editFlag;
     }
 
-    public String getClueId() {
-        return clueId;
+    public String getCustomerId() {
+        return customerId;
     }
 
-    public void setClueId(String clueId) {
-        this.clueId = clueId;
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
     }
 }
